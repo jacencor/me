@@ -67,7 +67,7 @@ function printPlace(lugar){
     const divCnel = document.createElement('div');
     const card = ''+
     '   <div class="container">'+
-    '       <h2>Horarios de cortes de luz de: '+lugar+'</h2>'+
+    '       <h2>Horarios de: '+lugar+'</h2>'+
     '   </div>';
     divCnel.innerHTML = card;
     cnel.appendChild(divCnel);
@@ -98,11 +98,7 @@ function printHours(inicio, fin){
 
 function printTimeline(index){
     const timeline="#timeline"+index;
-    console.log(timeline);
-    this.timeline(document.querySelectorAll(timeline), {
-        verticalStartPosition: 'left',
-        verticalTrigger: '150px'
-      });
+    this.timeline(document.querySelectorAll(timeline));
 }
 
 
