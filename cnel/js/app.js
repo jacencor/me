@@ -88,10 +88,40 @@ function printDay(dia, index){
 }
 
 function printHours(inicio, fin){
+    const ini = parseInt(inicio, 10);
+    const end = parseInt(fin, 10);
+
+    if(ini==0){
+        inicio="Media Noche";
+    }else if(ini > 0 && ini <= 6){
+        inicio=ini+" De La Madrugada";
+    }else if(ini >= 7 && ini <= 11){
+        inicio=ini+" De La Mañana";
+    }else if(ini == 12){
+        inicio=ini+" De La Tarde";
+    }else if(ini > 12 && ini <= 18){
+        inicio=ini-12+" De La Tarde";
+    }else if(ini >= 19 && ini <= 23){
+        inicio=ini-12+" De La Noche";
+    }
+    
+    if(end==0){
+        fin="Media Noche";
+    }else if(end > 0 && end <= 6){
+        fin=end+" De La Madrugada";
+    }else if(end >= 7 && end <= 11){
+        fin=end+" De La Mañana";
+    }else if(end == 12){
+        fin=end+" De La Tarde";
+    }else if(end > 12 && end <= 18){
+        fin=end-12+" De La Tarde";
+    }else if(end >= 19 && end <= 23){
+        fin=end-12+" De La Noche";
+    }
     const card = ''+
     '   <div class="timeline__content">'+
     '       <p>Sin luz:</p>'+
-    '       <p> Desde las <b>'+inicio+'</b> hasta las <b>'+fin+'</b></p>'+
+    '       <p> Desde: <b>'+inicio+'</b>, hasta: <b>'+fin+'</b></p>'+
     '   </div>';
     return card;
 }
