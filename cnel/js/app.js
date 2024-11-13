@@ -96,7 +96,7 @@ function printDay(lugar, dia, index){
     if(index.includes("-0")){
         card = card +
         '   <div class="container">'+
-        '       <h4>'+lugar+'</h4>'+
+        '       <h2>'+lugar+'</h2>'+
         '   </div>';
     }
     card = card +
