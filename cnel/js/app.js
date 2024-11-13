@@ -1,5 +1,10 @@
 
 let horario = null;
+const url1="https://api.cnelep.gob.ec/servicios-linea/v1/notificaciones/consultar/"
+
+function init(){
+    setLinkPage();
+}
 
 function getJson(url, callback) {
     horario = null;
@@ -12,6 +17,7 @@ function getJson(url, callback) {
 function callbackJson(error, data) {
     if (error) {
         console.log(error);
+        document.getElementById("resultUrl").innerHTML = "Para variar, hay problemas al consultar al CNEL...";
     } else {
         horario = data;
         console.log(horario);
@@ -24,15 +30,12 @@ function printCnel(){
     cnel.innerHTML = "";
     let dia = "";
     const items = horario.notificaciones[0].detallePlanificacion;
-    //console.log(items);
     let itemsCnel = null;
     for (let index = 0; index < items.length; index++) {
         const item = horario.notificaciones[0].detallePlanificacion[index];
-        //console.log(item);
-        //console.log(index);
-        const divCnel = document.createElement('div');
+        const divCnel = document.createElement("div");
         if(dia !== item.fechaCorte){
-            const divItem = document.createElement('div');
+            const divItem = document.createElement("div");
             divItem.classList.add("timeline__item")
             dia = item.fechaCorte;
             divCnel.innerHTML = printDay(dia, index);
@@ -42,7 +45,7 @@ function printCnel(){
             divItem.innerHTML = printHours(item.horaDesde, item.horaHasta);
             itemsCnel.appendChild(divItem);
         }else{
-            const divItem = document.createElement('div');
+            const divItem = document.createElement("div");
             divItem.classList.add("timeline__item")
             console.log(itemsCnel);
             divItem.innerHTML = printHours(item.horaDesde, item.horaHasta);
@@ -61,7 +64,6 @@ function printCnel(){
 }
 
 function printPlace(lugar){
-    console.log("ff");
     const cnel = document.getElementById("cnelPlace");
     cnel.innerHTML = "";
     const divCnel = document.createElement('div');
@@ -112,7 +114,7 @@ function printHours(inicio, fin){
     }else if(end >= 7 && end <= 11){
         fin=end+" De La Mañana";
     }else if(end == 12){
-        fin=end+" De La Tarde";
+        fin="Medio día";
     }else if(end > 12 && end <= 18){
         fin=end-12+" De La Tarde";
     }else if(end >= 19 && end <= 23){
@@ -131,24 +133,120 @@ function printTimeline(index){
     this.timeline(document.querySelectorAll(timeline));
 }
 
-
-function clickPage(e) {
-    e.preventDefault();
-    document.querySelectorAll(".nav-link").forEach((a) => {
-        a.classList.remove("active");
-    });
-    printPlace(e.target.innerHTML);
-    if (e.target.id == "LaJoya") {
-        getJson("https://api.cnelep.gob.ec/servicios-linea/v1/notificaciones/consultar/0911799591/IDENTIFICACION", callbackJson);
-    } else {
-        getJson("https://api.cnelep.gob.ec/servicios-linea/v1/notificaciones/consultar/0905577201/IDENTIFICACION", callbackJson);
-    }
-    e.target.classList.add("active");
+function setLinkPage() {
+    document.getElementById("searchForm").addEventListener("submit", searchProduct);
 }
 
-function setLinkPage() {
-    document.querySelectorAll(".nav-link").forEach((item) => {
-        item.removeEventListener("click", clickPage);
-        item.addEventListener("click", clickPage);
-    });
+const searchProduct = function (e) {
+    e.preventDefault();
+    const search = cleanSearch(document.getElementById("searchInput").value);
+    if(search==atob("Sk9ZQQ==")){
+        getJson(url1+atob("MDkxMTc5OTU5MQ==")+"/IDENTIFICACION", callbackJson);
+        printPlace(atob("Sk9ZQQ=="));
+    }else if(search==atob("VFJJVU5GTw==")){
+        getJson(url1+atob("MDkwNTU3NzIwMQ==")+"/IDENTIFICACION", callbackJson);
+        printPlace(atob("VFJJVU5GTw=="));
+    }else if(search==atob("U0FNQU5FUw==")){
+        getJson(url1+atob("MTMwMzUwNDY0OQ==")+"/IDENTIFICACION", callbackJson);
+        printPlace(atob("U0FNQU5FUw=="));
+    }else if(isValidCI(search)){
+        getJson(url1+search+"/IDENTIFICACION", callbackJson);
+    }else{
+        console.log("fail!");
+        printPlace(" Cortes de luz...");
+        const cnel = document.getElementById("cnel");
+        cnel.innerHTML = "";
+        const pCnel = document.createElement("p");
+        pCnel.classList.add("card-text")
+        pCnel.innerHTML = "Cédula invalida...";
+        cnel.appendChild(pCnel);
+    }
+}
+
+function cleanSearch(words) {
+    return words.toUpperCase()
+        .normalize('NFD')
+        .replace(/([^n\u0300-\u036f]|n(?!\u0303(?![\u0300-\u036f])))[\u0300-\u036f]+/gi, "$1")
+        .normalize();
+}
+
+/**
+ * Comprueba si el número de cédula ingresado es valido.
+ * @param  {string|integer}  ci Número de cédula
+ * @return {Boolean}
+ */
+function isValidCI(ci) {
+	var isNumeric = true;
+	var total = 0, 
+		individual;	
+
+	for (var position = 0 ; position < 10 ; position++) {
+		// Obtiene cada posición del número de cédula
+		// Se convierte a string en caso de que 'ci' sea un valor numérico
+		individual = ci.toString().substring(position, position + 1)
+
+		if(isNaN(individual)) {
+			console.log(ci, position,individual, isNaN(individual))
+			isNumeric=false;				
+			break;			
+		} else {
+			// Si la posición es menor a 9
+			if(position < 9) {
+				// Si la posición es par, osea 0, 2, 4, 6, 8.
+				if(position % 2 == 0) {
+					// Si el número individual de la cédula es mayor a 5
+					if(parseInt(individual)*2 > 9) {
+						// Se duplica el valor, se obtiene la parte decimal y se aumenta uno 
+						// y se lo suma al total
+						total += 1 + ((parseInt(individual)*2)%10);
+					} else {
+						// Si el número individual de la cédula es menor que 5 solo se lo duplica
+						// y se lo suma al total
+						total += parseInt(individual)*2;
+					}
+				// Si la posición es impar (1, 3, 5, 7)
+				}else {
+					// Se suma el número individual de la cédula al total
+					total += parseInt(individual);		    		
+				}
+			} 
+		}
+	}
+
+	if((total % 10) != 0) {
+		total =  (total - (total%10) + 10) - total;		
+	} else {
+		total = 0 ; 	
+	}
+
+
+	if(isNumeric) {	
+		// El total debe ser igual al último número de la cédula
+		console.log(ci, total, individual);
+		console.log(ci, typeof ci, ci.length)
+		// La cédula debe contener al menos 10 dígitos
+		if(ci.toString().length != 10) { 
+			console.log("La c\u00E9dula debe ser de: 10 d\u00EDgitos.");
+			return false; 
+		}
+
+		// El número de cédula no debe ser cero
+		if (parseInt(ci, 10) == 0) { 
+			console.log("La c\u00E9dula ingresada no puede ser cero.");
+			return false;
+		}
+
+		// El total debe ser igual al último número de la cédula
+		if(total != parseInt(individual)) { 
+			console.log("La c\u00E9dula ingresada no es v\u00E1lida.");
+			return false;
+		} 
+
+		console.log("cédula válida");
+		return true;			
+	}
+
+	// Si no es un número  
+	console.log("El dato solo puede contener numeros.");
+	return false;
 }

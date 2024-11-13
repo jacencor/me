@@ -26,17 +26,6 @@
         <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-body" data-bs-theme="dark">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">SinLuz</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
-                        <a id="LaJoya" class="nav-link active" href="#">La Joya</a>
-                        <a id="ElTriunfo" class="nav-link" href="#">El Triunfo</a>
-                    </div>
-                </div>
             </div>
         </nav>
     </header>
@@ -44,10 +33,27 @@
         <div class="container  mx-auto p-2">
             <div class="row">
                 <div class="col">
+                    <div class="row p-1 row-cols-1 row-cols-sm-2 row-cols-md-2 justify-content-between">
+                        <div class="col mb-1">
+                            <form id="searchForm" class="d-flex" role="search">
+                                <input id="searchInput" class="form-control me-2" type="search" placeholder="Buscar"
+                                    aria-label="buscar">
+                                <button class="btn btn-outline-success" type="submit">Buscar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
                     <div class="card text-center">
                         <div class="card-header" id="cnelPlace">
+                            <div class="container">
+                                <h2>Horarios de: Cortes de luz...</h2>
+                            </div>
                         </div>
                         <div class="card-body" id="cnel">
+                            <p class="card-text" id="resultUrl">Consulte con su cédula.</p>
                         </div>
                         <div class="card-footer text-body-secondary">
                             SinLuz
@@ -60,9 +66,7 @@
 
     <div id="run">
         <script>
-            setLinkPage();
-            printPlace("La Joya");
-            getJson("https://api.cnelep.gob.ec/servicios-linea/v1/notificaciones/consultar/0911799591/IDENTIFICACION", callbackJson);
+            init();
         </script>
     </div>
 
