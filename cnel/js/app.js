@@ -37,7 +37,7 @@ function printCnel(){
         const items = horario.notificaciones[indexA].detallePlanificacion;
         if( 0 == items.length){
             const divCnel = document.createElement("div");
-            const error = "Para variar, No hay horarios registrados aun por CNEL...";
+            const error = "Para variar, No hay horarios registrados por CNEL...";
             divCnel.innerHTML = printDay(noti[indexA].direccion, error, "0-0");
             cnel.appendChild(divCnel);
         }
