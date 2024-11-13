@@ -17,7 +17,8 @@ function getJson(url, callback) {
 function callbackJson(error, data) {
     if (error) {
         console.log(error);
-        document.getElementById("resultUrl").innerHTML = "Para variar, hay problemas al consultar al CNEL...";
+        printPlace(" Cortes de luz...");
+        printError("Para variar, hay problemas al consultar al CNEL...");
     } else {
         horario = data;
         console.log(horario);
@@ -29,38 +30,53 @@ function printCnel(){
     const cnel = document.getElementById("cnel");
     cnel.innerHTML = "";
     let dia = "";
-    const items = horario.notificaciones[0].detallePlanificacion;
+    const noti  = horario.notificaciones;
     let itemsCnel = null;
-    for (let index = 0; index < items.length; index++) {
-        const item = horario.notificaciones[0].detallePlanificacion[index];
-        const divCnel = document.createElement("div");
-        if(dia !== item.fechaCorte){
-            const divItem = document.createElement("div");
-            divItem.classList.add("timeline__item")
-            dia = item.fechaCorte;
-            divCnel.innerHTML = printDay(dia, index);
+    for (let indexA = 0; indexA < noti.length; indexA++){
+        console.log(indexA);
+        const items = horario.notificaciones[indexA].detallePlanificacion;
+        if( 0 == items.length){
+            const divCnel = document.createElement("div");
+            const error = "Para variar, No hay horarios registrados aun por CNEL...";
+            divCnel.innerHTML = printDay(noti[indexA].direccion, error, "0-0");
             cnel.appendChild(divCnel);
-            itemsCnel = document.getElementById("itemsCnel"+index);
-            console.log(itemsCnel);
-            divItem.innerHTML = printHours(item.horaDesde, item.horaHasta);
-            itemsCnel.appendChild(divItem);
-        }else{
-            const divItem = document.createElement("div");
-            divItem.classList.add("timeline__item")
-            console.log(itemsCnel);
-            divItem.innerHTML = printHours(item.horaDesde, item.horaHasta);
-            itemsCnel.appendChild(divItem);
         }
-        cnel.appendChild(divCnel);
+        for (let index = 0; index < items.length; index++) {
+            const item = horario.notificaciones[indexA].detallePlanificacion[index];
+            const divCnel = document.createElement("div");
+            if(dia !== item.fechaCorte){
+                const divItem = document.createElement("div");
+                divItem.classList.add("timeline__item");
+                dia = item.fechaCorte;
+                divCnel.innerHTML = printDay(noti[indexA].direccion, dia, indexA+"-"+index);
+                cnel.appendChild(divCnel);
+                itemsCnel = document.getElementById("itemsCnel"+indexA+"-"+index);
+                console.log(itemsCnel);
+                divItem.innerHTML = printHours(item.horaDesde, item.horaHasta);
+                itemsCnel.appendChild(divItem);
+            }else{
+                const divItem = document.createElement("div");
+                divItem.classList.add("timeline__item");
+                console.log(itemsCnel);
+                divItem.innerHTML = printHours(item.horaDesde, item.horaHasta);
+                itemsCnel.appendChild(divItem);
+            }
+            cnel.appendChild(divCnel);
+        }
     }
+    
     dia="";
-    for (let index = 0; index < items.length; index++) {
-        const item = horario.notificaciones[0].detallePlanificacion[index];
-        if(dia !== item.fechaCorte){
-            dia = item.fechaCorte;
-            printTimeline(index);
+    for (let indexA = 0; indexA < noti.length; indexA++){
+        const items = horario.notificaciones[indexA].detallePlanificacion;
+        for (let index = 0; index < items.length; index++) {
+            const item = horario.notificaciones[indexA].detallePlanificacion[index];
+            if(dia !== item.fechaCorte){
+                dia = item.fechaCorte;
+                printTimeline(indexA+"-"+index);
+            }
         }
     }
+    printPlace("Cortes de luz...");
 }
 
 function printPlace(lugar){
@@ -75,8 +91,15 @@ function printPlace(lugar){
     cnel.appendChild(divCnel);
 }
 
-function printDay(dia, index){
-    const card = ''+
+function printDay(lugar, dia, index){
+    let card = '';
+    if(index.includes("-0")){
+        card = card +
+        '   <div class="container">'+
+        '       <h4>'+lugar+'</h4>'+
+        '   </div>';
+    }
+    card = card +
     '   <div class="container">'+
     '       <h4>'+dia+'</h4>'+
     '   </div>'+
@@ -151,16 +174,21 @@ const searchProduct = function (e) {
         printPlace(atob("U0FNQU5FUw=="));
     }else if(isValidCI(search)){
         getJson(url1+search+"/IDENTIFICACION", callbackJson);
+        
     }else{
         console.log("fail!");
         printPlace(" Cortes de luz...");
-        const cnel = document.getElementById("cnel");
-        cnel.innerHTML = "";
-        const pCnel = document.createElement("p");
-        pCnel.classList.add("card-text")
-        pCnel.innerHTML = "Cédula invalida...";
-        cnel.appendChild(pCnel);
+        printError("Cédula invalida...");
     }
+}
+
+function printError(error){
+    const cnel = document.getElementById("cnel");
+    cnel.innerHTML = "";
+    const pCnel = document.createElement("p");
+    pCnel.classList.add("card-text")
+    pCnel.innerHTML = error;
+    cnel.appendChild(pCnel);
 }
 
 function cleanSearch(words) {
