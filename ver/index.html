@@ -4,21 +4,60 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="VER PELIS-SERIES">
-    <title>VER PELIS-SERIES</title>
+    <meta name="description" content="VER">
+    <title>VER</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
         integrity="sha512-b2QcS5SsA8tZodcDtGRELiGv5SaKSk1vDHDaQRda0htPYWZ6046lr3kJ5bAAQdpV2mmA/4v0wQF9MyU6/pDIAg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.2/font/bootstrap-icons.min.css"
+        integrity="sha512-D1liES3uvDpPrgk7vXR/hR/sukGn7EtDWEyvpdLsyalQYq6v6YUsTUJmku7B4rcuQ21rf0UTksw2i/2Pdjbd3g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"
+        integrity="sha512-X/YkDZyjTf4wyc2Vy16YGCPHwAY8rZJY+POgokZjQB2mhIRFJCckEGc6YyX9eNsPfn0PzThEuNs+uaomE5CO6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="js/timeline.min.js"></script>
+    <link href="css/timeline.min.css" rel="stylesheet" />
+    <script src="js/app.js"></script>
 </head>
 
 <body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-body" data-bs-theme="dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">VER</a>
+            </div>
+        </nav>
+    </header>
     <main>
-
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <iframe src="https://www.cinecalidad.vg/" style="width: 100vw;height: 100vh;position: relative;"
-                    sandbox="allow-same-origin allow-scripts allow-forms" allow="encrypted-media; autoplay; fullscreen"
-                    allowfullscreen referrerpolicy="no-referrer"></iframe>
+        <div class="container  mx-auto p-2">
+            <div class="row">
+                <div class="col">
+                    <div class="card text-center">
+                        <div class="card-header" id="cnelPlace">
+                            <div class="container">
+                                <h2>Ver pelis y series</h2>
+                            </div>
+                        </div>
+                        <div class="card-body" id="cnel">
+                            <div class="d-flex justify-content-center fs-2 gap-4 mb-2">
+                                <a class="btn btn-primary btn-lg px-5 py-3 fs-6 fw-bolder"
+                                    href="cinecalidad.html">Cinecanal</a>
+                            </div>
+                            <div class="d-flex justify-content-center fs-2 gap-4 mb-2">
+                                <a class="btn btn-primary btn-lg px-5 py-3 fs-6 fw-bolder"
+                                    href="playhublite.html">Playhublite</a>
+                            </div>
+                            <div class="d-flex justify-content-center fs-2 gap-4 mb-2">
+                                <a class="btn btn-primary btn-lg px-5 py-3 fs-6 fw-bolder"
+                                    href="sololatino.html">Sololatino</a>
+                            </div>
+                        </div>
+                        <div class="card-footer text-body-secondary">
+                            Stream
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
