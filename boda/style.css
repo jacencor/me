@@ -1,0 +1,33 @@
+body {
+    font-family: 'Parisienne', cursive; /* Fuente elegante */
+    color: #000; /* Color de texto negro */
+}
+
+.section {
+    padding: 100px 0;
+    color: #000; /* Color de texto negro */
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; /* Evita que las imágenes se repitan */
+    min-height: 100vh; /* Asegura que la sección cubra toda la altura de la pantalla */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra verticalmente el contenido */
+}
+
+.section h1, .section h2 {
+    font-family: 'Parisienne', cursive; /* Fuente elegante */
+    color: #000; /* Color de texto negro */
+}
+
+#invitacion { background-image: url('invitacion-bg.jpg'); }
+#contador { background-image: url('contador-bg.jpg'); }
+#lugar { background-image: url('lugar-bg.jpg'); }
+#regalos { background-image: url('regalos-bg.jpg'); }
+#vestimenta { background-image: url('vestimenta-bg.jpg'); }
+
+.footer {
+    background-color: #f8f9fa;
+    padding: 20px 0;
+}

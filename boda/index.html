@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación de Boda</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <a class="navbar-brand" href="#">Invitación de Boda</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="#invitacion">Invitación</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contador">Contador</a></li>
+                <li class="nav-item"><a class="nav-link" href="#lugar">Lugar</a></li>
+                <li class="nav-item"><a class="nav-link" href="#regalos">Regalos</a></li>
+                <li class="nav-item"><a class="nav-link" href="#vestimenta">Vestimenta</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="invitacion" class="section">
+        <div class="container">
+            <h1>¡Nos Casamos!</h1>
+            <p>Te invitamos a celebrar nuestro amor el [fecha de la boda].</p>
+        </div>
+    </section>
+
+    <section id="contador" class="section">
+        <div class="container">
+            <h2>Días para la Boda</h2>
+            <div id="countdown"></div>
+        </div>
+    </section>
+
+    <section id="lugar" class="section">
+        <div class="container">
+            <h2>Lugar de la Ceremonia</h2>
+            <h3>Iglesia</h3>
+            <p>Dirección de la Iglesia</p>
+            <a href="https://www.google.com/maps/place/[dirección]" target="_blank" class="btn btn-primary">Ver en Google Maps</a>
+            <h3>Recepción</h3>
+            <p>Dirección de la Recepción</p>
+            <a href="https://www.google.com/maps/place/[dirección]" target="_blank" class="btn btn-primary">Ver en Google Maps</a>
+        </div>
+    </section>
+
+    <section id="regalos" class="section">
+        <div class="container">
+            <h2>Regalos</h2>
+            <p>Puedes hacernos un regalo en efectivo o un regalo cerrado.</p>
+        </div>
+    </section>
+
+    <section id="vestimenta" class="section">
+        <div class="container">
+            <h2>Código de Vestimenta</h2>
+            <p>Se recomienda vestir de etiqueta.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container text-center">
+            <p>&copy; 2023 Invitación de Boda</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
