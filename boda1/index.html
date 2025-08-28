@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jackson & Ingrid</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            font-family: 'Montserrat', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding-left: 15%;
+            overflow-x: hidden;
+        }
+        
+        .invitation-text {
+            max-width: 600px;
+        }
+        
+        .couple-names {
+            font-family: 'Dancing Script', cursive;
+            font-size: 5rem;
+            color: #636B2F;
+            margin-bottom: 2rem;
+            transform: translateX(-100%);
+            animation: slideIn 1.5s forwards;
+            animation-delay: 0.5s;
+            opacity: 0;
+        }
+        
+        .date, .location, .hotel {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 500;
+            font-size: 1.2rem;
+            color: #434923;
+            margin-bottom: 1.2rem;
+            transform: translateX(-100%);
+            opacity: 0;
+            animation: slideIn 1.5s forwards;
+        }
+        
+        .date {
+            animation-delay: 1s;
+        }
+        
+        .location {
+            animation-delay: 1.5s;
+        }
+        
+        .hotel {
+            animation-delay: 2s;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        .divider {
+            height: 2px;
+            width: 80px;
+            background-color: #8B956D;
+            margin: 1.5rem 0;
+            transform: translateX(-100%);
+            animation: slideIn 1.5s forwards;
+            animation-delay: 2.5s;
+            opacity: 0;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding-left: 10%;
+            }
+            
+            .couple-names {
+                font-size: 3.5rem;
+            }
+            
+            .date, .location, .hotel {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="invitation-text">
+        <h1 class="couple-names">Jackson & Ingrid</h1>
+        <p class="date">Sábado 17 de enero del 2026</p>
+        <div class="divider"></div>
+        <p class="location">Cermonia: Paroquia San Gabriel de la Dolorosa</p>
+        <p class="hotel">Recepción: Wyndham Garden Guayaquil</p>
+    </div>
+
+    <script>
+        // Pequeño script para reiniciar animaciones si es necesario
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.couple-names, .date, .location, .hotel, .divider');
+            
+            // Reiniciar animaciones al hacer clic en cualquier parte
+            document.body.addEventListener('click', function() {
+                elements.forEach(element => {
+                    element.style.animation = 'none';
+                    setTimeout(() => {
+                        element.style.animation = '';
+                    }, 10);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

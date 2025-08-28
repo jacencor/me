@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paleta de Colores - Verde Oliva</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+        }
+        
+        h1 {
+            color: #636B2F;
+            margin-bottom: 10px;
+            font-size: 2.5rem;
+        }
+        
+        .description {
+            max-width: 800px;
+            margin: 0 auto;
+            color: #666;
+        }
+        
+        .color-palette {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .color-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .color-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .color-display {
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .color-info {
+            padding: 15px;
+            background: white;
+        }
+        
+        .color-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .color-code {
+            font-family: monospace;
+            color: #666;
+        }
+        
+        .usage-section {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+        }
+        
+        .usage-section h2 {
+            color: #636B2F;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .usage-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .example {
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .primary-bg {
+            background-color: #636B2F;
+            color: white;
+        }
+        
+        .secondary-bg {
+            background-color: #8B956D;
+            color: white;
+        }
+        
+        .accent-bg {
+            background-color: #C3C9A5;
+        }
+        
+        .complement-bg {
+            background-color: #2F3A6B;
+            color: white;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .color-palette {
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Paleta de Colores - Verde Oliva</h1>
+            <p class="description">Una paleta de colores armónica basada en el color principal #636B2F. Perfecta para diseños que requieren elegancia natural y conexión con la naturaleza.</p>
+        </header>
+        
+        <div class="color-palette">
+            <div class="color-card">
+                <div class="color-display" style="background-color: #636B2F;">
+                    <span style="color: white; background: rgba(0,0,0,0.3); padding: 5px; border-radius: 3px;">Principal</span>
+                </div>
+                <div class="color-info">
+                    <div class="color-name">Verde Oliva</div>
+                    <div class="color-code">#636B2F</div>
+                </div>
+            </div>
+            
+            <div class="color-card">
+                <div class="color-display" style="background-color: #8B956D;"></div>
+                <div class="color-info">
+                    <div class="color-name">Verde Musgo</div>
+                    <div class="color-code">#8B956D</div>
+                </div>
+            </div>
+            
+            <div class="color-card">
+                <div class="color-display" style="background-color: #C3C9A5;"></div>
+                <div class="color-info">
+                    <div class="color-name">Verde Pálido</div>
+                    <div class="color-code">#C3C9A5</div>
+                </div>
+            </div>
+            
+            <div class="color-card">
+                <div class="color-display" style="background-color: #434923;">
+                    <span style="color: white; background: rgba(0,0,0,0.3); padding: 5px; border-radius: 3px;">Oscuro</span>
+                </div>
+                <div class="color-info">
+                    <div class="color-name">Verde Bosque</div>
+                    <div class="color-code">#434923</div>
+                </div>
+            </div>
+            
+            <div class="color-card">
+                <div class="color-display" style="background-color: #E2E5D3;"></div>
+                <div class="color-info">
+                    <div class="color-name">Crema Verde</div>
+                    <div class="color-code">#E2E5D3</div>
+                </div>
+            </div>
+            
+            <div class="color-card">
+                <div class="color-display" style="background-color: #2F3A6B;">
+                    <span style="color: white; background: rgba(0,0,0,0.3); padding: 5px; border-radius: 3px;">Complementario</span>
+                </div>
+                <div class="color-info">
+                    <div class="color-name">Azul Profundo</div>
+                    <div class="color-code">#2F3A6B</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="usage-section">
+            <h2>Ejemplos de Uso</h2>
+            <div class="usage-examples">
+                <div class="example primary-bg">
+                    <h3>Fondo Principal</h3>
+                    <p>Ideal para encabezados y elementos destacados.</p>
+                </div>
+                
+                <div class="example secondary-bg">
+                    <h3>Fondo Secundario</h3>
+                    <p>Perfecto para barras laterales y elementos de navegación.</p>
+                </div>
+                
+                <div class="example accent-bg">
+                    <h3>Acento</h3>
+                    <p>Úsalo para destacar botones o elementos interactivos.</p>
+                </div>
+                
+                <div class="example complement-bg">
+                    <h3>Complemento</h3>
+                    <p>Excelente para llamadas a la acción y elementos importantes.</p>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Paleta de colores creada a partir del color principal #636B2F</p>
+        </footer>
+    </div>
+</body>
+</html>

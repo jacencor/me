@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación de Boda - Olivia y Taylor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background-color: #f9f6f2;
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="%23d4c4ab" stroke-width="1" /></svg>');
+        }
+        
+        .invitation-container {
+            max-width: 700px;
+            width: 100%;
+            background-color: #fff;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .header-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1)), 
+                        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="250" viewBox="0 0 400 250"><rect width="400" height="250" fill="%23d4c4ab"/><path d="M200,100 C250,60 300,80 300,120 C300,160 250,180 200,140 C150,180 100,160 100,120 C100,80 150,60 200,100 Z" fill="none" stroke="%23ffffff" stroke-width="2"/></svg>');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        
+        .header-image::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), transparent);
+        }
+        
+        .invitation-content {
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .names {
+            font-size: 2.8rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+            color: #5a4c3d;
+        }
+        
+        .and {
+            font-size: 1.8rem;
+            margin: 15px 0;
+            font-weight: 400;
+            font-style: italic;
+            color: #8a7866;
+        }
+        
+        .message {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: #555;
+            letter-spacing: 1px;
+        }
+        
+        .details {
+            margin: 25px 0;
+            font-size: 1.2rem;
+            color: #5a4c3d;
+        }
+        
+        .date {
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+        
+        .location {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .reception {
+            margin-top: 25px;
+            font-weight: 500;
+            color: #8a7866;
+            font-size: 1.1rem;
+        }
+        
+        .floral-divider {
+            margin: 30px auto;
+            width: 80%;
+            height: 20px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="20" viewBox="0 0 100 20"><path d="M0,10 Q20,0 40,10 Q60,20 80,10 Q100,0 100,10" fill="none" stroke="%23d4c4ab" stroke-width="0.5"/><path d="M10,10 C15,5 25,5 30,10 C35,15 45,15 50,10 C55,5 65,5 70,10 C75,15 85,15 90,10" fill="none" stroke="%23d4c4ab" stroke-width="0.5"/></svg>');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+        }
+        
+        .rsvp-button {
+            margin-top: 30px;
+            padding: 12px 30px;
+            background-color: #d4c4ab;
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .rsvp-button:hover {
+            background-color: #b8a992;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .footer {
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: #8a7866;
+        }
+        
+        @media (max-width: 768px) {
+            .names {
+                font-size: 2.2rem;
+            }
+            
+            .invitation-content {
+                padding: 30px 20px;
+            }
+            
+            .header-image {
+                height: 200px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .names {
+                font-size: 1.8rem;
+            }
+            
+            .and {
+                font-size: 1.4rem;
+            }
+            
+            .message, .details {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="invitation-container">
+        <div class="header-image"></div>
+        
+        <div class="invitation-content">
+            <h1 class="names">OLIVIA</h1>
+            <p class="and">and</p>
+            <h1 class="names">TAYLOR</h1>
+            
+            <p class="message">REQUEST THE PLEASURE OF YOUR COMPANY<br>AT THEIR WEDDING CELEBRATION</p>
+            
+            <div class="floral-divider"></div>
+            
+            <div class="details">
+                <p class="date">AT 3PM, 30TH OCTOBER 2023</p>
+                <p class="location">ANYWHERE HOTEL<br>123 ANYWHERE STREET, ANY CITY</p>
+            </div>
+            
+            <div class="floral-divider"></div>
+            
+            <p class="reception">Reception to Follow</p>
+            
+            <button class="rsvp-button" id="rsvpBtn">CONFIRMAR ASISTENCIA</button>
+            
+            <p class="footer">Nos encantaría compartir este día especial contigo</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const rsvpBtn = document.getElementById('rsvpBtn');
+            
+            rsvpBtn.addEventListener('click', function() {
+                const name = prompt('Por favor, ingresa tu nombre completo:');
+                if (name) {
+                    const guests = prompt(`Hola ${name}, ¿cuántas personas asistirán?`);
+                    if (guests !== null) {
+                        alert(`¡Gracias ${name}! Hemos registrado ${guests || '0'} invitado(s). ¡Esperamos verte en nuestra boda!`);
+                        rsvpBtn.textContent = 'ASISTENCIA CONFIRMADA';
+                        rsvpBtn.disabled = true;
+                        rsvpBtn.style.backgroundColor = '#8a7866';
+                    }
+                }
+            });
+            
+            // Efecto de aparición gradual de los elementos
+            const elements = document.querySelectorAll('.names, .and, .message, .details, .reception, .floral-divider, .rsvp-button, .footer');
+            elements.forEach((el, index) => {
+                el.style.opacity = '0';
+                setTimeout(() => {
+                    el.style.transition = 'opacity 1s ease';
+                    el.style.opacity = '1';
+                }, 100 + (index * 150));
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rosas SVG para Boda</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f7f2;
+            color: #5a5a5a;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+        }
+        .rose-container {
+            text-align: center;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .rose-container:hover {
+            transform: translateY(-5px);
+        }
+        h1 {
+            text-align: center;
+            color: #8a6d3b;
+            margin-bottom: 10px;
+        }
+        h2 {
+            color: #7e685a;
+            font-weight: normal;
+            font-size: 1.4rem;
+        }
+        p {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+        }
+        .rose-title {
+            font-style: italic;
+            color: #8a6d3b;
+            margin-top: 15px;
+        }
+        .instructions {
+            background-color: #fffaf0;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 40px;
+            border-left: 4px solid #e6c9a8;
+        }
+        .instructions h3 {
+            color: #8a6d3b;
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Rosas Elegantes para Invitación de Boda</h1>
+    <p>Diseños SVG de rosas inspirados en la invitación de boda de Olivia y Taylor. Perfectas para decorar tu página web de boda.</p>
+    
+    <div class="container">
+        <div class="rose-container">
+            <h2>Rosa Clásica</h2>
+            <svg width="200" height="200" viewBox="0 0 200 200">
+                <!-- Rosa clásica con gradiente suave -->
+                <defs>
+                    <linearGradient id="petalGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#f9d5e5" />
+                        <stop offset="100%" stop-color="#f6bdcf" />
+                    </linearGradient>
+                    <linearGradient id="leafGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#c9e4ca" />
+                        <stop offset="100%" stop-color="#87bba2" />
+                    </linearGradient>
+                </defs>
+                
+                <!-- Pétalos externos -->
+                <path d="M100,80 C80,60 50,70 50,90 C50,110 70,120 90,120 C110,120 130,110 130,90 C130,70 120,60 100,80Z" fill="url(#petalGradient)" stroke="#d48aa5" stroke-width="1.5"/>
+                
+                <!-- Pétalos medios -->
+                <path d="M100,85 C85,70 65,80 65,95 C65,110 80,115 95,115 C110,115 125,110 125,95 C125,80 115,70 100,85Z" fill="#f8c6d8" stroke="#d48aa5" stroke-width="1.5"/>
+                
+                <!-- Pétalos internos -->
+                <path d="M100,90 C90,80 75,85 75,95 C75,105 85,108 95,108 C105,108 115,105 115,95 C115,85 110,80 100,90Z" fill="#f6b0cb" stroke="#d48aa5" stroke-width="1.5"/>
+                
+                <!-- Centro de la rosa -->
+                <circle cx="100" cy="95" r="8" fill="#e5749a" stroke="#d48aa5" stroke-width="1.5"/>
+                
+                <!-- Tallo -->
+                <line x1="100" y1="125" x2="100" y2="170" stroke="#7e9f7d" stroke-width="5" stroke-linecap="round"/>
+                
+                <!-- Hojas -->
+                <path d="M100,140 C110,135 115,145 105,150 C115,155 110,165 100,160 C90,165 85,155 95,150 C85,145 90,135 100,140Z" fill="url(#leafGradient)" stroke="#5a7e59" stroke-width="1.5"/>
+            </svg>
+            <p class="rose-title">Elegancia atemporal</p>
+        </div>
+        
+        <div class="rose-container">
+            <h2>Rosa Estilizada</h2>
+            <svg width="200" height="200" viewBox="0 0 200 200">
+                <!-- Rosa estilizada con diseño minimalista -->
+                <defs>
+                    <linearGradient id="stylishPetal" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#ffdfed" />
+                        <stop offset="100%" stop-color="#ffc2dc" />
+                    </linearGradient>
+                    <linearGradient id="stylishLeaf" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#d4e6d4" />
+                        <stop offset="100%" stop-color="#a8c9a8" />
+                    </linearGradient>
+                </defs>
+                
+                <!-- Pétalos externos (más estilizados) -->
+                <path d="M100,70 C70,40 30,60 30,90 C30,120 60,130 90,130 C120,130 150,120 150,90 C150,60 130,40 100,70Z" fill="url(#stylishPetal)" stroke="#e6a0b9" stroke-width="2"/>
+                
+                <!-- Pétalos internos -->
+                <path d="M100,85 C80,65 50,75 50,95 C50,115 70,120 90,120 C110,120 130,115 130,95 C130,75 120,65 100,85Z" fill="#ffb8d6" stroke="#e6a0b9" stroke-width="2"/>
+                
+                <!-- Centro en espiral -->
+                <path d="M100,95 C95,90 90,92 90,95 C90,98 95,100 100,100 C105,100 110,98 110,95 C110,92 105,90 100,95Z" fill="#ff90bc" stroke="#e6a0b9" stroke-width="1.5"/>
+                
+                <!-- Tallo estilizado -->
+                <path d="M100,130 C100,150 100,170 100,170" stroke="#8fb28e" stroke-width="4" stroke-linecap="round" fill="none"/>
+                <path d="M100,150 C110,145 120,155 110,160" stroke="#8fb28e" stroke-width="4" stroke-linecap="round" fill="none"/>
+                
+                <!-- Hojas estilizadas -->
+                <path d="M100,150 C115,140 120,155 105,160 L100,165 Z" fill="url(#stylishLeaf)" stroke="#6a8c69" stroke-width="1.5"/>
+                <path d="M105,160 C125,155 130,170 115,175 L105,170 Z" fill="url(#stylishLeaf)" stroke="#6a8c69" stroke-width="1.5"/>
+            </svg>
+            <p class="rose-title">Belleza moderna</p>
+        </div>
+    </div>
+    
+    <div class="instructions">
+        <h3>Instrucciones de uso</h3>
+        <p>Puedes copiar el código SVG de cualquiera de estas rosas e insertarlo directamente en tu página web. Para cambiar el color, modifica los valores de "fill" en los elementos del SVG. También puedes ajustar el tamaño modificando los valores de "width" y "height" en la etiqueta SVG.</p>
+    </div>
+</body>
+</html>
