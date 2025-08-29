@@ -140,6 +140,21 @@
             opacity: 0.7;
             filter: sepia(30%) brightness(105%) contrast(90%);
         }
+        /* Imagen de fondo superpuesta - Modificada para lado izquierdo y efecto espejo */
+        .overlay-image2 {
+            position: fixed;
+            top: 0;
+            left: 0; /* Cambiado de right: 0 a left: 0 */
+            height: 100vh;
+            width: auto;
+            max-width: 40%;
+            z-index: -1;
+            object-fit: cover;
+            opacity: 0.7;
+            filter: sepia(30%) brightness(105%) contrast(90%) 
+                    flip-h; /* Voltear horizontalmente (no estándar, usamos transform below) */
+            transform: scaleX(-1); /* Efecto espejo estándar */
+        }
 
         @keyframes fadeIn {
             from {
@@ -193,6 +208,9 @@
 
 <body>
     <div class="invitation-text">
+        <!-- Imagen de fondo superpuesta -->
+        <img src="/boda1/floral1.png" alt="Imagen decorativa" class="overlay-image">
+        <img src="/boda1/floral1.png" alt="Imagen decorativa" class="overlay-image2">
         <p class="date">Esta cordialmente invitado a celebrar el matrimonio de</p>
         <h1 class="couple-names">Jackson & Ingrid</h1>
         <p class="date">Sábado 17 de enero del 2026</p>
