@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invitación de Boda - Olivia y Taylor</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Jackson & Ingrid - Invitación de Boda</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,324 +13,211 @@
         }
         
         body {
-            font-family: 'Cormorant Garamond', serif;
-            background-color: #6B8E23; /* Verde aceituna */
-            color: #FFF8E7;
+            background-color: #e8eae5;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            font-family: 'Montserrat', sans-serif;
             padding: 20px;
-            background-image: 
-                radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-                radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-            background-size: 30px 30px, 90px 90px;
-            background-position: 0 0, 0 0;
         }
         
-        .invitation-container {
+        .invitation-card {
+            width: 100%;
             max-width: 700px;
-            width: 100%;
-            background: rgba(123, 110, 60, 0.85); /* Verde aceituna más oscuro con transparencia */
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-            border-radius: 8px;
+            background-color: #f8f9fa;
+            padding: 50px 40px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1), 0 1px 4px rgba(0, 0, 0, 0.05);
+            position: relative;
             overflow: hidden;
-            position: relative;
-            border: 1px solid #A2AD7F;
-            backdrop-filter: blur(5px);
+            border: 1px solid rgba(99, 107, 47, 0.1);
         }
         
-        .header-image {
-            width: 100%;
-            height: 250px;
-            background: 
-                linear-gradient(rgba(107, 142, 35, 0.7), rgba(107, 142, 35, 0.4)), 
-                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="250" viewBox="0 0 400 250"><rect width="400" height="250" fill="%237B8E47"/><path d="M200,100 C250,60 300,80 300,120 C300,160 250,180 200,140 C150,180 100,160 100,120 C100,80 150,60 200,100 Z" fill="none" stroke="%23A2AD7F" stroke-width="2"/></svg>');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            border-bottom: 2px solid #A2AD7F;
-        }
-        
-        .header-image::before {
+        /* Efecto de papel de algodón */
+        .invitation-card::before {
             content: "";
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            right: 0;
+            bottom: 0;
             background-image: 
-                radial-gradient(circle at 20% 30%, rgba(162, 173, 127, 0.3) 0px, transparent 50px),
-                radial-gradient(circle at 80% 70%, rgba(162, 173, 127, 0.3) 0px, transparent 50px);
+                linear-gradient(rgba(255, 255, 255, 0.3) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.3) 1px, transparent 1px);
+            background-size: 20px 20px;
+            pointer-events: none;
+            opacity: 0.4;
         }
         
-        .header-image::after {
+        /* Borde decorativo */
+        .invitation-card::after {
             content: "";
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 30px;
-            background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.1));
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            bottom: 15px;
+            border: 1px solid rgba(99, 107, 47, 0.15);
+            pointer-events: none;
         }
         
         .invitation-content {
-            padding: 40px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .couple-names {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4.5rem;
+            color: #636B2F;
+            margin-bottom: 2.5rem;
             text-align: center;
+            transform: translateX(-100%);
+            animation: slideIn 1.5s forwards;
+            animation-delay: 0.5s;
+            opacity: 0;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
         }
         
-        .names {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.8rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            letter-spacing: 2px;
-            color: #FFF8E7;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-        }
-        
-        .and {
-            font-size: 1.8rem;
-            margin: 15px 0;
-            font-weight: 400;
-            font-style: italic;
-            color: #D1D9B0;
-        }
-        
-        .message {
-            font-size: 1.1rem;
+        .date, .ceremony, .reception, .dress-code, .rsvp, .additional-info {
+            text-transform: uppercase;
+            letter-spacing: 1.8px;
+            font-weight: 500;
+            font-size: 1rem;
+            color: #434923;
+            margin-bottom: 1.2rem;
+            transform: translateX(-100%);
+            opacity: 0;
+            animation: slideIn 1.5s forwards;
             line-height: 1.6;
-            margin-bottom: 30px;
-            color: #FFF8E7;
-            letter-spacing: 1px;
-        }
-        
-        .details {
-            margin: 25px 0;
-            font-size: 1.2rem;
-            color: #FFF8E7;
+            padding-left: 20px;
+            border-left: 2px solid #C3C9A5;
         }
         
         .date {
-            font-weight: 600;
-            margin-bottom: 10px;
-            font-size: 1.3rem;
-            color: #D1D9B0;
+            animation-delay: 1s;
         }
         
-        .location {
-            font-style: italic;
-            margin-bottom: 20px;
-            color: #FFF8E7;
+        .ceremony {
+            animation-delay: 1.5s;
         }
         
         .reception {
-            margin-top: 25px;
-            font-weight: 500;
-            color: #D1D9B0;
-            font-size: 1.1rem;
+            animation-delay: 2s;
         }
         
-        .floral-divider {
-            margin: 30px auto;
-            width: 80%;
-            height: 20px;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="20" viewBox="0 0 100 20"><path d="M0,10 Q20,0 40,10 Q60,20 80,10 Q100,0 100,10" fill="none" stroke="%23D1D9B0" stroke-width="0.5"/><path d="M10,10 C15,5 25,5 30,10 C35,15 45,15 50,10 C55,5 65,5 70,10 C75,15 85,15 90,10" fill="none" stroke="%23D1D9B0" stroke-width="0.5"/></svg>');
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: contain;
+        .dress-code {
+            animation-delay: 2.5s;
         }
         
-        .rsvp-button {
-            margin-top: 30px;
-            padding: 12px 30px;
-            background-color: #A2AD7F;
-            color: #2C3E1A;
-            border: none;
-            border-radius: 30px;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        .rsvp {
+            animation-delay: 3s;
         }
         
-        .rsvp-button:hover {
-            background-color: #D1D9B0;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+        .additional-info {
+            animation-delay: 3.5s;
         }
         
-        .footer {
-            margin-top: 40px;
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        .divider {
+            height: 1px;
+            width: 100%;
+            background: linear-gradient(to right, transparent, #8B956D, transparent);
+            margin: 2rem 0;
+            transform: translateX(-100%);
+            animation: slideIn 1.5s forwards;
+            animation-delay: 4s;
+            opacity: 0;
+        }
+        
+        .footer-note {
+            text-align: center;
+            font-style: italic;
+            color: #8B956D;
             font-size: 0.9rem;
-            color: #D1D9B0;
+            margin-top: 2.5rem;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            animation-delay: 4.5s;
         }
         
-        .olive-branch {
-            position: absolute;
-            width: 120px;
-            height: 80px;
-            opacity: 0.6;
-            z-index: 0;
-        }
-        
-        .branch-top-left {
-            top: 10px;
-            left: 10px;
-            transform: rotate(-15deg);
-        }
-        
-        .branch-top-right {
-            top: 10px;
-            right: 10px;
-            transform: rotate(15deg) scaleX(-1);
-        }
-        
-        .branch-bottom-left {
-            bottom: 10px;
-            left: 10px;
-            transform: rotate(15deg);
-        }
-        
-        .branch-bottom-right {
-            bottom: 10px;
-            right: 10px;
-            transform: rotate(-15deg) scaleX(-1);
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
         
         @media (max-width: 768px) {
-            .names {
-                font-size: 2.2rem;
-            }
-            
-            .invitation-content {
+            .invitation-card {
                 padding: 30px 20px;
             }
             
-            .header-image {
-                height: 200px;
+            .couple-names {
+                font-size: 3.2rem;
+                margin-bottom: 2rem;
             }
             
-            .olive-branch {
-                width: 80px;
-                height: 60px;
+            .date, .ceremony, .reception, .dress-code, .rsvp, .additional-info {
+                font-size: 0.85rem;
+                letter-spacing: 1.5px;
+                padding-left: 15px;
             }
         }
         
         @media (max-width: 480px) {
-            .names {
-                font-size: 1.8rem;
+            .couple-names {
+                font-size: 2.8rem;
             }
             
-            .and {
-                font-size: 1.4rem;
-            }
-            
-            .message, .details {
-                font-size: 1rem;
-            }
-            
-            .olive-branch {
-                width: 60px;
-                height: 50px;
+            .date, .ceremony, .reception, .dress-code, .rsvp, .additional-info {
+                font-size: 0.75rem;
+                letter-spacing: 1.2px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="invitation-container">
-        <!-- Ramas de olivo decorativas -->
-        <div class="olive-branch branch-top-left">
-            <svg viewBox="0 0 100 70" xmlns="http://www.w3.org/2000/svg">
-                <path d="M10,35 Q30,10 50,35 Q70,60 90,35" fill="none" stroke="#A2AD7F" stroke-width="1.5"/>
-                <ellipse cx="30" cy="32" rx="5" ry="3" fill="#A2AD7F" transform="rotate(-15 30 32)"/>
-                <ellipse cx="50" cy="40" rx="5" ry="3" fill="#A2AD7F" transform="rotate(10 50 40)"/>
-                <ellipse cx="70" cy="35" rx="5" ry="3" fill="#A2AD7F" transform="rotate(-5 70 35)"/>
-            </svg>
-        </div>
-        <div class="olive-branch branch-top-right">
-            <svg viewBox="0 0 100 70" xmlns="http://www.w3.org/2000/svg">
-                <path d="M10,35 Q30,10 50,35 Q70,60 90,35" fill="none" stroke="#A2AD7F" stroke-width="1.5"/>
-                <ellipse cx="30" cy="32" rx="5" ry="3" fill="#A2AD7F" transform="rotate(-15 30 32)"/>
-                <ellipse cx="50" cy="40" rx="5" ry="3" fill="#A2AD7F" transform="rotate(10 50 40)"/>
-                <ellipse cx="70" cy="35" rx="5" ry="3" fill="#A2AD7F" transform="rotate(-5 70 35)"/>
-            </svg>
-        </div>
-        <div class="olive-branch branch-bottom-left">
-            <svg viewBox="0 0 100 70" xmlns="http://www.w3.org/2000/svg">
-                <path d="M10,35 Q30,10 50,35 Q70,60 90,35" fill="none" stroke="#A2AD7F" stroke-width="1.5"/>
-                <ellipse cx="30" cy="32" rx="5" ry="3" fill="#A2AD7F" transform="rotate(-15 30 32)"/>
-                <ellipse cx="50" cy="40" rx="5" ry="3" fill="#A2AD7F" transform="rotate(10 50 40)"/>
-                <ellipse cx="70" cy="35" rx="5" ry="3" fill="#A2AD7F" transform="rotate(-5 70 35)"/>
-            </svg>
-        </div>
-        <div class="olive-branch branch-bottom-right">
-            <svg viewBox="0 0 100 70" xmlns="http://www.w3.org/2000/svg">
-                <path d="M10,35 Q30,10 50,35 Q70,60 90,35" fill="none" stroke="#A2AD7F" stroke-width="1.5"/>
-                <ellipse cx="30" cy="32" rx="5" ry="3" fill="#A2AD7F" transform="rotate(-15 30 32)"/>
-                <ellipse cx="50" cy="40" rx="5" ry="3" fill="#A2AD7F" transform="rotate(10 50 40)"/>
-                <ellipse cx="70" cy="35" rx="5" ry="3" fill="#A2AD7F" transform="rotate(-5 70 35)"/>
-            </svg>
-        </div>
-        
-        <div class="header-image"></div>
-        
+    <div class="invitation-card">
         <div class="invitation-content">
-            <h1 class="names">OLIVIA</h1>
-            <p class="and">and</p>
-            <h1 class="names">TAYLOR</h1>
+            <h1 class="couple-names">Jackson & Ingrid</h1>
             
-            <p class="message">REQUEST THE PLEASURE OF YOUR COMPANY<br>AT THEIR WEDDING CELEBRATION</p>
+            <p class="date">Sábado 17 de enero del 2026</p>
             
-            <div class="floral-divider"></div>
+            <div class="divider"></div>
             
-            <div class="details">
-                <p class="date">AT 3PM, 30TH OCTOBER 2023</p>
-                <p class="location">ANYWHERE HOTEL<br>123 ANYWHERE STREET, ANY CITY</p>
-            </div>
+            <p class="ceremony">Ceremonia: Parroquia San Gabriel de la Dolorosa - 15:00 Hrs</p>
+            <p class="reception">Recepción: Wyndham Garden - 18:00 Hrs</p>
             
-            <div class="floral-divider"></div>
+            <div class="divider"></div>
             
-            <p class="reception">Reception to Follow</p>
+            <p class="dress-code">Código de Vestimenta: Formal</p>
+            <p class="rsvp">Confirmar Asistencia: 31 de Diciembre 2025</p>
+            <p class="additional-info">Mesa de Regalos: Amazon & Liverpool</p>
             
-            <button class="rsvp-button" id="rsvpBtn">CONFIRMAR ASISTENCIA</button>
-            
-            <p class="footer">Nos encantaría compartir este día especial contigo</p>
+            <p class="footer-note">Con la bendición de nuestros padres y la gracia de Dios</p>
         </div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const rsvpBtn = document.getElementById('rsvpBtn');
+            const elements = document.querySelectorAll('.couple-names, .date, .ceremony, .reception, .dress-code, .rsvp, .additional-info, .divider, .footer-note');
             
-            rsvpBtn.addEventListener('click', function() {
-                const name = prompt('Por favor, ingresa tu nombre completo:');
-                if (name) {
-                    const guests = prompt(`Hola ${name}, ¿cuántas personas asistirán?`);
-                    if (guests !== null) {
-                        alert(`¡Gracias ${name}! Hemos registrado ${guests || '0'} invitado(s). ¡Esperamos verte en nuestra boda!`);
-                        rsvpBtn.textContent = 'ASISTENCIA CONFIRMADA';
-                        rsvpBtn.disabled = true;
-                        rsvpBtn.style.backgroundColor = '#7B8E47';
-                    }
-                }
-            });
-            
-            // Efecto de aparición gradual de los elementos
-            const elements = document.querySelectorAll('.names, .and, .message, .details, .reception, .floral-divider, .rsvp-button, .footer');
-            elements.forEach((el, index) => {
-                el.style.opacity = '0';
-                el.style.transform = 'translateY(20px)';
-                setTimeout(() => {
-                    el.style.transition = 'opacity 1s ease, transform 1s ease';
-                    el.style.opacity = '1';
-                    el.style.transform = 'translateY(0)';
-                }, 100 + (index * 150));
+            document.body.addEventListener('click', function() {
+                elements.forEach(element => {
+                    element.style.animation = 'none';
+                    setTimeout(() => {
+                        element.style.animation = '';
+                    }, 10);
+                });
             });
         });
     </script>

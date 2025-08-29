@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Textura de Papel con Filtros SVG</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background-color: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1000px;
+            width: 90%;
+            margin: 40px auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        .demo-box {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .title {
+            color: #636B2F;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+        
+        .subtitle {
+            color: #434923;
+            margin-bottom: 15px;
+            font-size: 20px;
+            border-bottom: 2px solid #C3C9A5;
+            padding-bottom: 5px;
+        }
+        
+        .paper-texture {
+            background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cfilter id='paperEffect'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='5' result='noise' /%3E%3CfeDiffuseLighting in='noise' lightingColor='%23fff' surfaceScale='2' result='texture'%3E%3CfeDistantLight azimuth='45' elevation='60' /%3E%3C/feDiffuseLighting%3E%3CfeTurbulence type='turbulence' baseFrequency='0.05' numOctaves='3' seed='5' result='tornNoise' /%3E%3CfeDisplacementMap in='SourceGraphic' in2='tornNoise' scale='10' xChannelSelector='R' yChannelSelector='G' result='tornEdges' /%3E%3CfeBlend in='texture' in2='tornEdges' mode='multiply' result='combined' /%3E%3C/filter%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='%23ffffff' filter='url(%23paperEffect)' /%3E%3C/svg%3E");
+            background-repeat: repeat;
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #636B2F;
+            font-weight: bold;
+            font-size: 18px;
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #E2E5D3;
+        }
+        
+        .explanation {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #636B2F;
+        }
+        
+        .code-block {
+            background-color: #2F3A6B;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-size: 14px;
+        }
+        
+        .param {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding: 8px;
+            background-color: #E2E5D3;
+            border-radius: 4px;
+        }
+        
+        .param-label {
+            font-weight: bold;
+            color: #434923;
+        }
+        
+        .param-desc {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .control-btn {
+            background-color: #636B2F;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .control-btn:hover {
+            background-color: #434923;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title">Textura de Papel con Filtros SVG</h1>
+    
+    <div class="container">
+        <div class="demo-box">
+            <h2 class="subtitle">Demo de Textura</h2>
+            <div class="paper-texture">
+                Textura generada con filtros SVG<br>
+                Efecto de papel de alta calidad
+            </div>
+        </div>
+        
+        <div class="demo-box">
+            <h2 class="subtitle">Análisis del Código</h2>
+            <div class="explanation">
+                <p>El código utiliza un filtro SVG con los siguientes componentes:</p>
+                
+                <div class="param">
+                    <span class="param-label">feTurbulence</span>
+                    <span class="param-desc">Genera ruido fractal para la textura base</span>
+                </div>
+                
+                <div class="param">
+                    <span class="param-label">feDiffuseLighting</span>
+                    <span class="param-desc">Aplica iluminación para crear relieve 3D</span>
+                </div>
+                
+                <div class="param">
+                    <span class="param-label">feDisplacementMap</span>
+                    <span class="param-desc">Distorsiona los bordes para efecto de papel</span>
+                </div>
+                
+                <div class="param">
+                    <span class="param-label">feBlend</span>
+                    <span class="param-desc">Combina los efectos con modo multiply</span>
+                </div>
+                
+                <div class="code-block">
+                    background-image: url("data:image/svg+xml,...");
+                </div>
+                
+                <div class="controls">
+                    <button class="control-btn" onclick="changeTexture('light')">Textura Clara</button>
+                    <button class="control-btn" onclick="changeTexture('parchment')">Textura Pergamino</button>
+                    <button class="control-btn" onclick="changeTexture('heavy')">Textura Pesada</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function changeTexture(type) {
+            const textureDiv = document.querySelector('.paper-texture');
+            
+            // Diferentes configuraciones de textura
+            const textures = {
+                light: {
+                    bg: "#f8f9fa",
+                    filter: "%3Csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cfilter id='paperEffect'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.03' numOctaves='3' result='noise' /%3E%3CfeDiffuseLighting in='noise' lightingColor='%23fff' surfaceScale='1' result='texture'%3E%3CfeDistantLight azimuth='45' elevation='60' /%3E%3C/feDiffuseLighting%3E%3CfeTurbulence type='turbulence' baseFrequency='0.02' numOctaves='2' seed='5' result='tornNoise' /%3E%3CfeDisplacementMap in='SourceGraphic' in2='tornNoise' scale='5' xChannelSelector='R' yChannelSelector='G' result='tornEdges' /%3E%3CfeBlend in='texture' in2='tornEdges' mode='multiply' result='combined' /%3E%3C/filter%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='%23f8f9fa' filter='url(%23paperEffect)' /%3E%3C/svg%3E"
+                },
+                parchment: {
+                    bg: "#f8f9fa",
+                    filter: "%3Csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cfilter id='paperEffect'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='5' result='noise' /%3E%3CfeDiffuseLighting in='noise' lightingColor='%23fff' surfaceScale='2' result='texture'%3E%3CfeDistantLight azimuth='45' elevation='60' /%3E%3C/feDiffuseLighting%3E%3CfeTurbulence type='turbulence' baseFrequency='0.05' numOctaves='3' seed='5' result='tornNoise' /%3E%3CfeDisplacementMap in='SourceGraphic' in2='tornNoise' scale='10' xChannelSelector='R' yChannelSelector='G' result='tornEdges' /%3E%3CfeBlend in='texture' in2='tornEdges' mode='multiply' result='combined' /%3E%3C/filter%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='%23f8f9fa' filter='url(%23paperEffect)' /%3E%3C/svg%3E"
+                },
+                heavy: {
+                    bg: "#f8f9fa",
+                    filter: "%3Csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cfilter id='paperEffect'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.06' numOctaves='6' result='noise' /%3E%3CfeDiffuseLighting in='noise' lightingColor='%23f0f0f0' surfaceScale='3' result='texture'%3E%3CfeDistantLight azimuth='45' elevation='60' /%3E%3C/feDiffuseLighting%3E%3CfeTurbulence type='turbulence' baseFrequency='0.07' numOctaves='4' seed='5' result='tornNoise' /%3E%3CfeDisplacementMap in='SourceGraphic' in2='tornNoise' scale='15' xChannelSelector='R' yChannelSelector='G' result='tornEdges' /%3E%3CfeBlend in='texture' in2='tornEdges' mode='multiply' result='combined' /%3E%3C/filter%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='%23f0f0f0' filter='url(%23paperEffect)' /%3E%3C/svg%3E"
+                }
+            };
+            
+            // Aplicar la textura seleccionada
+            textureDiv.style.backgroundImage = `url("data:image/svg+xml,${textures[type].filter}")`;
+            textureDiv.style.backgroundColor = textures[type].bg;
+        }
+    </script>
+</body>
+</html>

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jackson & Ingrid</title>
+    <link href="https://fonts.googleapis.com/css?family=Pirata+One|Bilbo+Swash+Caps&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
@@ -74,11 +75,22 @@
             }
         }
         
-        .divider {
+        .divider2 {
             height: 2px;
             width: 80px;
             background-color: #8B956D;
             margin: 1.5rem 0;
+            transform: translateX(-100%);
+            animation: slideIn 1.5s forwards;
+            animation-delay: 2.5s;
+            opacity: 0;
+        }
+
+        .divider {
+            height: 1px;
+            width: 100%;
+            background: linear-gradient(to right, transparent, #8B956D, transparent);
+            margin: 2rem 0;
             transform: translateX(-100%);
             animation: slideIn 1.5s forwards;
             animation-delay: 2.5s;
