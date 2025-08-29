@@ -3,148 +3,451 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rosas SVG para Boda</title>
+    <title>Control de Textura de Papel SVG</title>
     <style>
-        body {
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f9f7f2;
-            color: #5a5a5a;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
         }
+        
+        body {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
         .container {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
-            gap: 40px;
-            margin-top: 30px;
-        }
-        .rose-container {
-            text-align: center;
+            max-width: 1400px;
+            margin: 0 auto;
             padding: 20px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+            gap: 20px;
         }
-        .rose-container:hover {
-            transform: translateY(-5px);
+        
+        header {
+            background: linear-gradient(to right, #34495e, #2c3e50);
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
+        
         h1 {
-            text-align: center;
-            color: #8a6d3b;
+            font-size: 2.2rem;
             margin-bottom: 10px;
+            color: #3498db;
         }
-        h2 {
-            color: #7e685a;
-            font-weight: normal;
-            font-size: 1.4rem;
-        }
-        p {
-            text-align: center;
+        
+        .description {
             max-width: 800px;
-            margin: 0 auto 30px;
+            margin: 0 auto;
+            color: #bdc3c7;
             line-height: 1.6;
         }
-        .rose-title {
-            font-style: italic;
-            color: #8a6d3b;
-            margin-top: 15px;
+        
+        .panel {
+            flex: 1;
+            min-width: 300px;
+            background: #34495e;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
         }
-        .instructions {
-            background-color: #fffaf0;
+        
+        .preview {
+            flex: 2;
+            min-width: 400px;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .preview-content {
+            flex: 1;
+            padding: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f8f9fa;
+        }
+        
+        .texture-display {
+            width: 100%;
+            height: 100%;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-image: var(--texture);
+            background-repeat: repeat;
+        }
+        
+        .control-group {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .control-group h3 {
+            color: #3498db;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .control {
+            margin-bottom: 15px;
+        }
+        
+        .control label {
+            display: block;
+            margin-bottom: 8px;
+            color: #ecf0f1;
+            font-weight: 500;
+        }
+        
+        .slider-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .slider-container input[type="range"] {
+            flex: 1;
+            height: 6px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: #2c3e50;
+            border-radius: 3px;
+            outline: none;
+        }
+        
+        .slider-container input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #3498db;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .slider-container input[type="range"]::-webkit-slider-thumb:hover {
+            background: #2980b9;
+        }
+        
+        .value-display {
+            min-width: 50px;
+            text-align: center;
+            background: #2c3e50;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            color: #3498db;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            background: #3498db;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            flex: 1;
+        }
+        
+        button:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        button.reset {
+            background: #e74c3c;
+        }
+        
+        button.reset:hover {
+            background: #c0392b;
+        }
+        
+        .code-preview {
+            background: #2c3e50;
             padding: 20px;
-            border-radius: 10px;
-            margin-top: 40px;
-            border-left: 4px solid #e6c9a8;
+            border-radius: 0 0 12px 12px;
+            overflow-x: auto;
         }
-        .instructions h3 {
-            color: #8a6d3b;
-            margin-top: 0;
+        
+        .code-preview h3 {
+            color: #3498db;
+            margin-bottom: 15px;
+        }
+        
+        pre {
+            background: #1e272e;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            color: #ecf0f1;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .panel, .preview {
+                min-width: 100%;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>Rosas Elegantes para Invitación de Boda</h1>
-    <p>Diseños SVG de rosas inspirados en la invitación de boda de Olivia y Taylor. Perfectas para decorar tu página web de boda.</p>
+    <header>
+        <h1>Panel de Control para Textura de Papel SVG</h1>
+        <p class="description">Ajusta los parámetros del filtro SVG en tiempo real para crear diferentes texturas de papel.</p>
+    </header>
     
     <div class="container">
-        <div class="rose-container">
-            <h2>Rosa Clásica</h2>
-            <svg width="200" height="200" viewBox="0 0 200 200">
-                <!-- Rosa clásica con gradiente suave -->
-                <defs>
-                    <linearGradient id="petalGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#f9d5e5" />
-                        <stop offset="100%" stop-color="#f6bdcf" />
-                    </linearGradient>
-                    <linearGradient id="leafGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#c9e4ca" />
-                        <stop offset="100%" stop-color="#87bba2" />
-                    </linearGradient>
-                </defs>
+        <div class="panel">
+            <div class="control-group">
+                <h3>feTurbulence (Textura Base)</h3>
                 
-                <!-- Pétalos externos -->
-                <path d="M100,80 C80,60 50,70 50,90 C50,110 70,120 90,120 C110,120 130,110 130,90 C130,70 120,60 100,80Z" fill="url(#petalGradient)" stroke="#d48aa5" stroke-width="1.5"/>
+                <div class="control">
+                    <label for="baseFrequency">Base Frequency</label>
+                    <div class="slider-container">
+                        <input type="range" id="baseFrequency" min="0.01" max="0.1" step="0.01" value="0.04">
+                        <span class="value-display" id="baseFrequencyValue">0.04</span>
+                    </div>
+                </div>
                 
-                <!-- Pétalos medios -->
-                <path d="M100,85 C85,70 65,80 65,95 C65,110 80,115 95,115 C110,115 125,110 125,95 C125,80 115,70 100,85Z" fill="#f8c6d8" stroke="#d48aa5" stroke-width="1.5"/>
+                <div class="control">
+                    <label for="numOctaves">Num Octaves</label>
+                    <div class="slider-container">
+                        <input type="range" id="numOctaves" min="1" max="8" step="1" value="5">
+                        <span class="value-display" id="numOctavesValue">5</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="control-group">
+                <h3>feDiffuseLighting (Iluminación)</h3>
                 
-                <!-- Pétalos internos -->
-                <path d="M100,90 C90,80 75,85 75,95 C75,105 85,108 95,108 C105,108 115,105 115,95 C115,85 110,80 100,90Z" fill="#f6b0cb" stroke="#d48aa5" stroke-width="1.5"/>
+                <div class="control">
+                    <label for="surfaceScale">Surface Scale</label>
+                    <div class="slider-container">
+                        <input type="range" id="surfaceScale" min="0.5" max="5" step="0.1" value="2">
+                        <span class="value-display" id="surfaceScaleValue">2</span>
+                    </div>
+                </div>
                 
-                <!-- Centro de la rosa -->
-                <circle cx="100" cy="95" r="8" fill="#e5749a" stroke="#d48aa5" stroke-width="1.5"/>
+                <div class="control">
+                    <label for="azimuth">Light Azimuth</label>
+                    <div class="slider-container">
+                        <input type="range" id="azimuth" min="0" max="360" step="1" value="45">
+                        <span class="value-display" id="azimuthValue">45°</span>
+                    </div>
+                </div>
                 
-                <!-- Tallo -->
-                <line x1="100" y1="125" x2="100" y2="170" stroke="#7e9f7d" stroke-width="5" stroke-linecap="round"/>
+                <div class="control">
+                    <label for="elevation">Light Elevation</label>
+                    <div class="slider-container">
+                        <input type="range" id="elevation" min="0" max="90" step="1" value="60">
+                        <span class="value-display" id="elevationValue">60°</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="control-group">
+                <h3>feTurbulence (Bordes)</h3>
                 
-                <!-- Hojas -->
-                <path d="M100,140 C110,135 115,145 105,150 C115,155 110,165 100,160 C90,165 85,155 95,150 C85,145 90,135 100,140Z" fill="url(#leafGradient)" stroke="#5a7e59" stroke-width="1.5"/>
-            </svg>
-            <p class="rose-title">Elegancia atemporal</p>
+                <div class="control">
+                    <label for="turbulenceFreq">Turbulence Frequency</label>
+                    <div class="slider-container">
+                        <input type="range" id="turbulenceFreq" min="0.01" max="0.1" step="0.01" value="0.05">
+                        <span class="value-display" id="turbulenceFreqValue">0.05</span>
+                    </div>
+                </div>
+                
+                <div class="control">
+                    <label for="turbulenceOctaves">Turbulence Octaves</label>
+                    <div class="slider-container">
+                        <input type="range" id="turbulenceOctaves" min="1" max="8" step="1" value="3">
+                        <span class="value-display" id="turbulenceOctavesValue">3</span>
+                    </div>
+                </div>
+                
+                <div class="control">
+                    <label for="seed">Seed</label>
+                    <div class="slider-container">
+                        <input type="range" id="seed" min="1" max="10" step="1" value="5">
+                        <span class="value-display" id="seedValue">5</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="control-group">
+                <h3>feDisplacementMap (Desplazamiento)</h3>
+                
+                <div class="control">
+                    <label for="scale">Scale</label>
+                    <div class="slider-container">
+                        <input type="range" id="scale" min="0" max="20" step="1" value="10">
+                        <span class="value-display" id="scaleValue">10</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="button-group">
+                <button id="applyBtn">Aplicar Cambios</button>
+                <button class="reset" id="resetBtn">Reiniciar</button>
+            </div>
         </div>
         
-        <div class="rose-container">
-            <h2>Rosa Estilizada</h2>
-            <svg width="200" height="200" viewBox="0 0 200 200">
-                <!-- Rosa estilizada con diseño minimalista -->
-                <defs>
-                    <linearGradient id="stylishPetal" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#ffdfed" />
-                        <stop offset="100%" stop-color="#ffc2dc" />
-                    </linearGradient>
-                    <linearGradient id="stylishLeaf" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#d4e6d4" />
-                        <stop offset="100%" stop-color="#a8c9a8" />
-                    </linearGradient>
-                </defs>
-                
-                <!-- Pétalos externos (más estilizados) -->
-                <path d="M100,70 C70,40 30,60 30,90 C30,120 60,130 90,130 C120,130 150,120 150,90 C150,60 130,40 100,70Z" fill="url(#stylishPetal)" stroke="#e6a0b9" stroke-width="2"/>
-                
-                <!-- Pétalos internos -->
-                <path d="M100,85 C80,65 50,75 50,95 C50,115 70,120 90,120 C110,120 130,115 130,95 C130,75 120,65 100,85Z" fill="#ffb8d6" stroke="#e6a0b9" stroke-width="2"/>
-                
-                <!-- Centro en espiral -->
-                <path d="M100,95 C95,90 90,92 90,95 C90,98 95,100 100,100 C105,100 110,98 110,95 C110,92 105,90 100,95Z" fill="#ff90bc" stroke="#e6a0b9" stroke-width="1.5"/>
-                
-                <!-- Tallo estilizado -->
-                <path d="M100,130 C100,150 100,170 100,170" stroke="#8fb28e" stroke-width="4" stroke-linecap="round" fill="none"/>
-                <path d="M100,150 C110,145 120,155 110,160" stroke="#8fb28e" stroke-width="4" stroke-linecap="round" fill="none"/>
-                
-                <!-- Hojas estilizadas -->
-                <path d="M100,150 C115,140 120,155 105,160 L100,165 Z" fill="url(#stylishLeaf)" stroke="#6a8c69" stroke-width="1.5"/>
-                <path d="M105,160 C125,155 130,170 115,175 L105,170 Z" fill="url(#stylishLeaf)" stroke="#6a8c69" stroke-width="1.5"/>
-            </svg>
-            <p class="rose-title">Belleza moderna</p>
+        <div class="preview">
+            <div class="preview-content">
+                <div class="texture-display" id="textureDisplay"></div>
+            </div>
+            
+            <div class="code-preview">
+                <h3>Código SVG Generado</h3>
+                <pre id="codeOutput">// El código se generará aquí</pre>
+            </div>
         </div>
     </div>
-    
-    <div class="instructions">
-        <h3>Instrucciones de uso</h3>
-        <p>Puedes copiar el código SVG de cualquiera de estas rosas e insertarlo directamente en tu página web. Para cambiar el color, modifica los valores de "fill" en los elementos del SVG. También puedes ajustar el tamaño modificando los valores de "width" y "height" en la etiqueta SVG.</p>
-    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elementos DOM
+            const textureDisplay = document.getElementById('textureDisplay');
+            const codeOutput = document.getElementById('codeOutput');
+            const applyBtn = document.getElementById('applyBtn');
+            const resetBtn = document.getElementById('resetBtn');
+            
+            // Controladores de entrada
+            const inputs = {
+                baseFrequency: document.getElementById('baseFrequency'),
+                numOctaves: document.getElementById('numOctaves'),
+                surfaceScale: document.getElementById('surfaceScale'),
+                azimuth: document.getElementById('azimuth'),
+                elevation: document.getElementById('elevation'),
+                turbulenceFreq: document.getElementById('turbulenceFreq'),
+                turbulenceOctaves: document.getElementById('turbulenceOctaves'),
+                seed: document.getElementById('seed'),
+                scale: document.getElementById('scale')
+            };
+            
+            // Mostradores de valores
+            const valueDisplays = {
+                baseFrequency: document.getElementById('baseFrequencyValue'),
+                numOctaves: document.getElementById('numOctavesValue'),
+                surfaceScale: document.getElementById('surfaceScaleValue'),
+                azimuth: document.getElementById('azimuthValue'),
+                elevation: document.getElementById('elevationValue'),
+                turbulenceFreq: document.getElementById('turbulenceFreqValue'),
+                turbulenceOctaves: document.getElementById('turbulenceOctavesValue'),
+                seed: document.getElementById('seedValue'),
+                scale: document.getElementById('scaleValue')
+            };
+            
+            // Actualizar los mostradores de valores
+            for (const [key, input] of Object.entries(inputs)) {
+                input.addEventListener('input', function() {
+                    if (key === 'azimuth' || key === 'elevation') {
+                        valueDisplays[key].textContent = this.value + '°';
+                    } else {
+                        valueDisplays[key].textContent = this.value;
+                    }
+                });
+            }
+            
+            // Función para generar el SVG
+            function generateTexture() {
+                const baseFrequency = inputs.baseFrequency.value;
+                const numOctaves = inputs.numOctaves.value;
+                const surfaceScale = inputs.surfaceScale.value;
+                const azimuth = inputs.azimuth.value;
+                const elevation = inputs.elevation.value;
+                const turbulenceFreq = inputs.turbulenceFreq.value;
+                const turbulenceOctaves = inputs.turbulenceOctaves.value;
+                const seed = inputs.seed.value;
+                const scale = inputs.scale.value;
+                
+                const svgCode = `
+<svg width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'>
+  <defs>
+    <filter id='paperEffect'>
+      <feTurbulence type='fractalNoise' baseFrequency='${baseFrequency}' numOctaves='${numOctaves}' result='noise'/>
+      <feDiffuseLighting in='noise' lightingColor='#fff' surfaceScale='${surfaceScale}' result='texture'>
+        <feDistantLight azimuth='${azimuth}' elevation='${elevation}'/>
+      </feDiffuseLighting>
+      <feTurbulence type='turbulence' baseFrequency='${turbulenceFreq}' numOctaves='${turbulenceOctaves}' seed='${seed}' result='tornNoise'/>
+      <feDisplacementMap in='SourceGraphic' in2='tornNoise' scale='${scale}' xChannelSelector='R' yChannelSelector='G' result='tornEdges'/>
+      <feBlend in='texture' in2='tornEdges' mode='multiply' result='combined'/>
+    </filter>
+  </defs>
+  <rect width='100%' height='100%' fill='#f8f9fa' filter='url(#paperEffect)'/>
+</svg>`;
+                
+                const encodedSVG = encodeURIComponent(svgCode)
+                    .replace(/'/g, '%27')
+                    .replace(/"/g, '%22');
+                
+                const dataURL = `data:image/svg+xml,${encodedSVG}`;
+                
+                // Aplicar al display
+                console.log(dataURL);
+                textureDisplay.style.backgroundImage = `url("${dataURL}")`;
+                
+                // Mostrar el código
+                codeOutput.textContent = dataURL;
+                
+                // Guardar en variable CSS para posible uso adicional
+                document.documentElement.style.setProperty('--texture', `url("${dataURL}")`);
+            }
+            
+            // Aplicar cambios
+            applyBtn.addEventListener('click', generateTexture);
+            
+            // Reiniciar valores
+            resetBtn.addEventListener('click', function() {
+                inputs.baseFrequency.value = 0.04;
+                inputs.numOctaves.value = 5;
+                inputs.surfaceScale.value = 2;
+                inputs.azimuth.value = 45;
+                inputs.elevation.value = 60;
+                inputs.turbulenceFreq.value = 0.05;
+                inputs.turbulenceOctaves.value = 3;
+                inputs.seed.value = 5;
+                inputs.scale.value = 10;
+                
+                // Actualizar displays
+                for (const [key, input] of Object.entries(inputs)) {
+                    if (key === 'azimuth' || key === 'elevation') {
+                        valueDisplays[key].textContent = input.value + '°';
+                    } else {
+                        valueDisplays[key].textContent = input.value;
+                    }
+                }
+                
+                generateTexture();
+            });
+            
+            // Generar textura inicial
+            generateTexture();
+        });
+    </script>
 </body>
 </html>

@@ -3,232 +3,315 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invitación de Boda - Olivia y Taylor</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Colores para SVG - Paleta Verde Oliva</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            font-family: 'Cormorant Garamond', serif;
-            background-color: #f9f6f2;
+            background-color: #f8f9fa;
             color: #333;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            line-height: 1.6;
             padding: 20px;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="%23d4c4ab" stroke-width="1" /></svg>');
         }
         
-        .invitation-container {
-            max-width: 700px;
-            width: 100%;
-            background-color: #fff;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             overflow: hidden;
-            position: relative;
         }
         
-        .header-image {
-            width: 100%;
-            height: 250px;
-            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1)), 
-                        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="250" viewBox="0 0 400 250"><rect width="400" height="250" fill="%23d4c4ab"/><path d="M200,100 C250,60 300,80 300,120 C300,160 250,180 200,140 C150,180 100,160 100,120 C100,80 150,60 200,100 Z" fill="none" stroke="%23ffffff" stroke-width="2"/></svg>');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-        
-        .header-image::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 30px;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.1), transparent);
-        }
-        
-        .invitation-content {
-            padding: 40px;
+        header {
+            background: linear-gradient(to right, #636B2F, #434923);
+            color: white;
+            padding: 30px;
             text-align: center;
         }
         
-        .names {
-            font-size: 2.8rem;
-            font-weight: 600;
-            margin-bottom: 30px;
-            letter-spacing: 2px;
-            color: #5a4c3d;
-        }
-        
-        .and {
-            font-size: 1.8rem;
-            margin: 15px 0;
-            font-weight: 400;
-            font-style: italic;
-            color: #8a7866;
-        }
-        
-        .message {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 30px;
-            color: #555;
-            letter-spacing: 1px;
-        }
-        
-        .details {
-            margin: 25px 0;
-            font-size: 1.2rem;
-            color: #5a4c3d;
-        }
-        
-        .date {
-            font-weight: 600;
+        h1 {
+            font-size: 2.5rem;
             margin-bottom: 10px;
-            font-size: 1.3rem;
         }
         
-        .location {
-            font-style: italic;
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        h2 {
+            color: #636B2F;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #E2E5D3;
+        }
+        
+        .color-palette {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .color-card {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .color-display {
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        .color-info {
+            padding: 15px;
+            background: white;
+        }
+        
+        .color-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .color-code {
+            font-family: monospace;
+            color: #666;
+        }
+        
+        .recommendation {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #636B2F;
             margin-bottom: 20px;
         }
         
-        .reception {
-            margin-top: 25px;
-            font-weight: 500;
-            color: #8a7866;
-            font-size: 1.1rem;
+        .recommendation h3 {
+            color: #434923;
+            margin-bottom: 10px;
         }
         
-        .floral-divider {
-            margin: 30px auto;
-            width: 80%;
-            height: 20px;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="20" viewBox="0 0 100 20"><path d="M0,10 Q20,0 40,10 Q60,20 80,10 Q100,0 100,10" fill="none" stroke="%23d4c4ab" stroke-width="0.5"/><path d="M10,10 C15,5 25,5 30,10 C35,15 45,15 50,10 C55,5 65,5 70,10 C75,15 85,15 90,10" fill="none" stroke="%23d4c4ab" stroke-width="0.5"/></svg>');
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: contain;
+        .code-block {
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: monospace;
+            line-height: 1.5;
+            margin: 20px 0;
         }
         
-        .rsvp-button {
+        .tag {
+            color: #e74c3c;
+        }
+        
+        .attribute {
+            color: #3498db;
+        }
+        
+        .value {
+            color: #2ecc71;
+        }
+        
+        .example {
+            background: #E2E5D3;
+            padding: 30px;
+            border-radius: 8px;
             margin-top: 30px;
-            padding: 12px 30px;
-            background-color: #d4c4ab;
-            color: #fff;
-            border: none;
-            border-radius: 30px;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            text-align: center;
         }
         
-        .rsvp-button:hover {
-            background-color: #b8a992;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        .example-svg {
+            width: 100%;
+            max-width: 400px;
+            height: 200px;
+            margin: 0 auto;
+            background: #f8f9fa;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #636B2F;
         }
         
-        .footer {
-            margin-top: 40px;
-            font-size: 0.9rem;
-            color: #8a7866;
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #434923;
+            color: white;
         }
         
         @media (max-width: 768px) {
-            .names {
-                font-size: 2.2rem;
-            }
-            
-            .invitation-content {
-                padding: 30px 20px;
-            }
-            
-            .header-image {
-                height: 200px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .names {
-                font-size: 1.8rem;
-            }
-            
-            .and {
-                font-size: 1.4rem;
-            }
-            
-            .message, .details {
-                font-size: 1rem;
+            .color-palette {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <div class="invitation-container">
-        <div class="header-image"></div>
+    <div class="container">
+        <header>
+            <h1>Colores para lightingColor y fill</h1>
+            <p class="subtitle">Recomendaciones basadas en la paleta verde oliva</p>
+        </header>
         
-        <div class="invitation-content">
-            <h1 class="names">OLIVIA</h1>
-            <p class="and">and</p>
-            <h1 class="names">TAYLOR</h1>
-            
-            <p class="message">REQUEST THE PLEASURE OF YOUR COMPANY<br>AT THEIR WEDDING CELEBRATION</p>
-            
-            <div class="floral-divider"></div>
-            
-            <div class="details">
-                <p class="date">AT 3PM, 30TH OCTOBER 2023</p>
-                <p class="location">ANYWHERE HOTEL<br>123 ANYWHERE STREET, ANY CITY</p>
+        <div class="content">
+            <div class="section">
+                <h2>Paleta de Colores Original</h2>
+                <div class="color-palette">
+                    <div class="color-card">
+                        <div class="color-display" style="background-color: #636B2F;">#636B2F</div>
+                        <div class="color-info">
+                            <div class="color-name">Verde Oliva</div>
+                            <div class="color-code">Principal</div>
+                        </div>
+                    </div>
+                    
+                    <div class="color-card">
+                        <div class="color-display" style="background-color: #8B956D;">#8B956D</div>
+                        <div class="color-info">
+                            <div class="color-name">Verde Musgo</div>
+                            <div class="color-code">Secundario</div>
+                        </div>
+                    </div>
+                    
+                    <div class="color-card">
+                        <div class="color-display" style="background-color: #C3C9A5; color: #333;">#C3C9A5</div>
+                        <div class="color-info">
+                            <div class="color-name">Verde Pálido</div>
+                            <div class="color-code">Acento</div>
+                        </div>
+                    </div>
+                    
+                    <div class="color-card">
+                        <div class="color-display" style="background-color: #434923;">#434923</div>
+                        <div class="color-info">
+                            <div class="color-name">Verde Bosque</div>
+                            <div class="color-code">Oscuro</div>
+                        </div>
+                    </div>
+                    
+                    <div class="color-card">
+                        <div class="color-display" style="background-color: #E2E5D3; color: #333;">#E2E5D3</div>
+                        <div class="color-info">
+                            <div class="color-name">Crema Verde</div>
+                            <div class="color-code">Claro</div>
+                        </div>
+                    </div>
+                    
+                    <div class="color-card">
+                        <div class="color-display" style="background-color: #2F3A6B;">#2F3A6B</div>
+                        <div class="color-info">
+                            <div class="color-name">Azul Profundo</div>
+                            <div class="color-code">Complementario</div>
+                        </div>
+                    </div>
+                </div>
             </div>
             
-            <div class="floral-divider"></div>
+            <div class="section">
+                <h2>Recomendaciones para lightingColor</h2>
+                
+                <div class="recommendation">
+                    <h3>Opción 1: Blanco (#FFFFFF)</h3>
+                    <p>Ideal para texturas de papel, ya que produce un efecto de iluminación natural.</p>
+                    <div class="code-block">
+                        <span class="tag">&lt;feDiffuseLighting</span> <span class="attribute">in=</span><span class="value">'noise'</span> <span class="attribute">lightingColor=</span><span class="value">'#FFFFFF'</span> <span class="attribute">surfaceScale=</span><span class="value">'2'</span> <span class="attribute">result=</span><span class="value">'texture'</span><span class="tag">&gt;</span>
+                    </div>
+                </div>
+                
+                <div class="recommendation">
+                    <h3>Opción 2: Crema Verde (#E2E5D3)</h3>
+                    <p>Produce un efecto de iluminación cálida que armoniza con la paleta de colores.</p>
+                    <div class="code-block">
+                        <span class="tag">&lt;feDiffuseLighting</span> <span class="attribute">in=</span><span class="value">'noise'</span> <span class="attribute">lightingColor=</span><span class="value">'#E2E5D3'</span> <span class="attribute">surfaceScale=</span><span class="value">'2'</span> <span class="attribute">result=</span><span class="value">'texture'</span><span class="tag">&gt;</span>
+                    </div>
+                </div>
+                
+                <div class="recommendation">
+                    <h3>Opción 3: Verde Pálido (#C3C9A5)</h3>
+                    <p>Para un efecto de iluminación más intenso con un tono verde suave.</p>
+                    <div class="code-block">
+                        <span class="tag">&lt;feDiffuseLighting</span> <span class="attribute">in=</span><span class="value">'noise'</span> <span class="attribute">lightingColor=</span><span class="value">'#C3C9A5'</span> <span class="attribute">surfaceScale=</span><span class="value">'2'</span> <span class="attribute">result=</span><span class="value">'texture'</span><span class="tag">&gt;</span>
+                    </div>
+                </div>
+            </div>
             
-            <p class="reception">Reception to Follow</p>
+            <div class="section">
+                <h2>Recomendaciones para fill</h2>
+                
+                <div class="recommendation">
+                    <h3>Opción 1: Fondo base (#F8F9FA)</h3>
+                    <p>El color de fondo original que mantiene la coherencia con el diseño.</p>
+                    <div class="code-block">
+                        <span class="tag">&lt;rect</span> <span class="attribute">width=</span><span class="value">'100%'</span> <span class="attribute">height=</span><span class="value">'100%'</span> <span class="attribute">fill=</span><span class="value">'#F8F9FA'</span> <span class="attribute">filter=</span><span class="value">'url(#paperEffect)'</span><span class="tag">/&gt;</span>
+                    </div>
+                </div>
+                
+                <div class="recommendation">
+                    <h3>Opción 2: Crema Verde (#E2E5D3)</h3>
+                    <p>Un tono más cálido que sigue manteniendo la armonía con la paleta.</p>
+                    <div class="code-block">
+                        <span class="tag">&lt;rect</span> <span class="attribute">width=</span><span class="value">'100%'</span> <span class="attribute">height=</span><span class="value">'100%'</span> <span class="attribute">fill=</span><span class="value">'#E2E5D3'</span> <span class="attribute">filter=</span><span class="value">'url(#paperEffect)'</span><span class="tag">/&gt;</span>
+                    </div>
+                </div>
+                
+                <div class="recommendation">
+                    <h3>Opción 3: Verde Pálido (#C3C9A5)</h3>
+                    <p>Para un fondo con más presencia de color pero manteniendo la suavidad.</p>
+                    <div class="code-block">
+                        <span class="tag">&lt;rect</span> <span class="attribute">width=</span><span class="value">'100%'</span> <span class="attribute">height=</span><span class="value">'100%'</span> <span class="attribute">fill=</span><span class="value">'#C3C9A5'</span> <span class="attribute">filter=</span><span class="value">'url(#paperEffect)'</span><span class="tag">/&gt;</span>
+                    </div>
+                </div>
+            </div>
             
-            <button class="rsvp-button" id="rsvpBtn">CONFIRMAR ASISTENCIA</button>
-            
-            <p class="footer">Nos encantaría compartir este día especial contigo</p>
+            <div class="section">
+                <h2>Combinación Recomendada</h2>
+                <div class="recommendation">
+                    <h3>Para textura de papel elegante</h3>
+                    <p>La mejor combinación para lograr una textura de papel de alta calidad:</p>
+                    <div class="code-block">
+                        <span class="tag">&lt;feDiffuseLighting</span> <span class="attribute">in=</span><span class="value">'noise'</span> <span class="attribute">lightingColor=</span><span class="value">'#FFFFFF'</span> <span class="attribute">surfaceScale=</span><span class="value">'2'</span> <span class="attribute">result=</span><span class="value">'texture'</span><span class="tag">&gt;</span>
+                        <span class="tag">&lt;feDistantLight</span> <span class="attribute">azimuth=</span><span class="value">'45'</span> <span class="attribute">elevation=</span><span class="value">'60'</span><span class="tag">/&gt;</span>
+                        <span class="tag">&lt;/feDiffuseLighting&gt;</span>
+                        <span class="tag">&lt;rect</span> <span class="attribute">width=</span><span class="value">'100%'</span> <span class="attribute">height=</span><span class="value">'100%'</span> <span class="attribute">fill=</span><span class="value">'#F8F9FA'</span> <span class="attribute">filter=</span><span class="value">'url(#paperEffect)'</span><span class="tag">/&gt;</span>
+                    </div>
+                </div>
+                
+                <div class="example">
+                    <h3>Ejemplo de SVG con textura</h3>
+                    <div class="example-svg">
+                        SVG con textura de papel aplicada
+                    </div>
+                </div>
+            </div>
         </div>
+        
+        <footer>
+            <p>Paleta de colores verde oliva - lightingColor y fill recomendados</p>
+        </footer>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const rsvpBtn = document.getElementById('rsvpBtn');
-            
-            rsvpBtn.addEventListener('click', function() {
-                const name = prompt('Por favor, ingresa tu nombre completo:');
-                if (name) {
-                    const guests = prompt(`Hola ${name}, ¿cuántas personas asistirán?`);
-                    if (guests !== null) {
-                        alert(`¡Gracias ${name}! Hemos registrado ${guests || '0'} invitado(s). ¡Esperamos verte en nuestra boda!`);
-                        rsvpBtn.textContent = 'ASISTENCIA CONFIRMADA';
-                        rsvpBtn.disabled = true;
-                        rsvpBtn.style.backgroundColor = '#8a7866';
-                    }
-                }
-            });
-            
-            // Efecto de aparición gradual de los elementos
-            const elements = document.querySelectorAll('.names, .and, .message, .details, .reception, .floral-divider, .rsvp-button, .footer');
-            elements.forEach((el, index) => {
-                el.style.opacity = '0';
-                setTimeout(() => {
-                    el.style.transition = 'opacity 1s ease';
-                    el.style.opacity = '1';
-                }, 100 + (index * 150));
-            });
-        });
-    </script>
 </body>
 </html>
