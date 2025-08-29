@@ -3,223 +3,246 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jackson & Ingrid - Invitación de Boda</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <title>Fondo SVG con Imagen Superpuesta</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            background-color: #e8eae5;
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: 'Montserrat', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* Aplicar el SVG como fondo de toda la página */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cfilter id='paperEffect'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.1' numOctaves='8' result='noise'/%3E%3CfeDiffuseLighting in='noise' lightingColor='%23fff' surfaceScale='0.5' result='texture'%3E%3CfeDistantLight azimuth='0' elevation='47'/%3E%3C/feDiffuseLighting%3E%3CfeTurbulence type='turbulence' baseFrequency='0.1' numOctaves='8' seed='10' result='tornNoise'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='tornNoise' scale='20' xChannelSelector='R' yChannelSelector='G' result='tornEdges'/%3E%3CfeBlend in='texture' in2='tornEdges' mode='multiply' result='combined'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='%23f8f9fa' filter='url(%23paperEffect)'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        /* Imagen de fondo superpuesta */
+        .overlay-image {
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100vh;
+            width: auto;
+            max-width: 40%;
+            z-index: -1;
+            object-fit: cover;
+            opacity: 0.7;
+            filter: sepia(30%) brightness(105%) contrast(90%);
+        }
+        
+        .content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: rgba(255, 255, 255, 0.85);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin-top: 40px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
             padding: 20px;
         }
         
-        .invitation-card {
-            width: 100%;
-            max-width: 700px;
-            background-color: #f8f9fa;
-            padding: 50px 40px;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1), 0 1px 4px rgba(0, 0, 0, 0.05);
+        h1 {
+            color: #2c3e50;
+            font-size: 2.8rem;
+            margin-bottom: 15px;
             position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(99, 107, 47, 0.1);
+            display: inline-block;
         }
         
-        /* Efecto de papel de algodón */
-        .invitation-card::before {
+        h1::after {
             content: "";
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                linear-gradient(rgba(255, 255, 255, 0.3) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.3) 1px, transparent 1px);
-            background-size: 20px 20px;
-            pointer-events: none;
-            opacity: 0.4;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #3498db, #2c3e50);
+            border-radius: 2px;
         }
         
-        /* Borde decorativo */
-        .invitation-card::after {
-            content: "";
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            right: 15px;
-            bottom: 15px;
-            border: 1px solid rgba(99, 107, 47, 0.15);
-            pointer-events: none;
-        }
-        
-        .invitation-content {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .couple-names {
-            font-family: 'Dancing Script', cursive;
-            font-size: 4.5rem;
-            color: #636B2F;
-            margin-bottom: 2.5rem;
-            text-align: center;
-            transform: translateX(-100%);
-            animation: slideIn 1.5s forwards;
-            animation-delay: 0.5s;
-            opacity: 0;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
-        }
-        
-        .date, .ceremony, .reception, .dress-code, .rsvp, .additional-info {
-            text-transform: uppercase;
-            letter-spacing: 1.8px;
-            font-weight: 500;
-            font-size: 1rem;
-            color: #434923;
-            margin-bottom: 1.2rem;
-            transform: translateX(-100%);
-            opacity: 0;
-            animation: slideIn 1.5s forwards;
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
             line-height: 1.6;
-            padding-left: 20px;
-            border-left: 2px solid #C3C9A5;
         }
         
-        .date {
-            animation-delay: 1s;
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
         }
         
-        .ceremony {
-            animation-delay: 1.5s;
+        .feature {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
         
-        .reception {
-            animation-delay: 2s;
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
         
-        .dress-code {
-            animation-delay: 2.5s;
+        .feature h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
         }
         
-        .rsvp {
-            animation-delay: 3s;
+        .feature p {
+            color: #7f8c8d;
+            line-height: 1.6;
         }
         
-        .additional-info {
-            animation-delay: 3.5s;
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #3498db;
         }
         
-        @keyframes slideIn {
-            from {
-                transform: translateX(-100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
+        .code-section {
+            background: #2c3e50;
+            padding: 30px;
+            border-radius: 8px;
+            margin-top: 40px;
+            color: white;
         }
         
-        .divider {
-            height: 1px;
-            width: 100%;
-            background: linear-gradient(to right, transparent, #8B956D, transparent);
-            margin: 2rem 0;
-            transform: translateX(-100%);
-            animation: slideIn 1.5s forwards;
-            animation-delay: 4s;
-            opacity: 0;
+        .code-section h2 {
+            margin-bottom: 20px;
+            color: #3498db;
         }
         
-        .footer-note {
+        pre {
+            background: #1e272e;
+            padding: 20px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: 'Fira Code', monospace;
+            line-height: 1.5;
+        }
+        
+        .code-comment {
+            color: #7f8c8d;
+        }
+        
+        .tag {
+            color: #e74c3c;
+        }
+        
+        .attribute {
+            color: #3498db;
+        }
+        
+        .value {
+            color: #2ecc71;
+        }
+        
+        footer {
             text-align: center;
-            font-style: italic;
-            color: #8B956D;
-            font-size: 0.9rem;
-            margin-top: 2.5rem;
-            opacity: 0;
-            animation: fadeIn 1s forwards;
-            animation-delay: 4.5s;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            margin-top: 50px;
+            padding: 20px;
+            color: #7f8c8d;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
         }
         
         @media (max-width: 768px) {
-            .invitation-card {
-                padding: 30px 20px;
+            .features {
+                grid-template-columns: 1fr;
             }
             
-            .couple-names {
-                font-size: 3.2rem;
-                margin-bottom: 2rem;
+            h1 {
+                font-size: 2.2rem;
             }
             
-            .date, .ceremony, .reception, .dress-code, .rsvp, .additional-info {
-                font-size: 0.85rem;
-                letter-spacing: 1.5px;
-                padding-left: 15px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .couple-names {
-                font-size: 2.8rem;
-            }
-            
-            .date, .ceremony, .reception, .dress-code, .rsvp, .additional-info {
-                font-size: 0.75rem;
-                letter-spacing: 1.2px;
+            .overlay-image {
+                max-width: 60%;
+                opacity: 0.5;
             }
         }
     </style>
 </head>
 <body>
-    <div class="invitation-card">
-        <div class="invitation-content">
-            <h1 class="couple-names">Jackson & Ingrid</h1>
-            
-            <p class="date">Sábado 17 de enero del 2026</p>
-            
-            <div class="divider"></div>
-            
-            <p class="ceremony">Ceremonia: Parroquia San Gabriel de la Dolorosa - 15:00 Hrs</p>
-            <p class="reception">Recepción: Wyndham Garden - 18:00 Hrs</p>
-            
-            <div class="divider"></div>
-            
-            <p class="dress-code">Código de Vestimenta: Formal</p>
-            <p class="rsvp">Confirmar Asistencia: 31 de Diciembre 2025</p>
-            <p class="additional-info">Mesa de Regalos: Amazon & Liverpool</p>
-            
-            <p class="footer-note">Con la bendición de nuestros padres y la gracia de Dios</p>
-        </div>
-    </div>
+    <!-- Imagen de fondo superpuesta -->
+    <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=654&q=80" alt="Imagen decorativa" class="overlay-image">
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const elements = document.querySelectorAll('.couple-names, .date, .ceremony, .reception, .dress-code, .rsvp, .additional-info, .divider, .footer-note');
+    <div class="content">
+        <header>
+            <h1>Fondo con Textura SVG</h1>
+            <p class="subtitle">Este ejemplo muestra cómo superponer una imagen sobre un fondo SVG, ajustándose al alto de la pantalla.</p>
+        </header>
+        
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">🎨</div>
+                <h3>Textura de Papel SVG</h3>
+                <p>El fondo utiliza un filtro SVG complejo que genera una textura similar al papel artesanal, con variaciones sutiles y un aspecto orgánico.</p>
+            </div>
             
-            document.body.addEventListener('click', function() {
-                elements.forEach(element => {
-                    element.style.animation = 'none';
-                    setTimeout(() => {
-                        element.style.animation = '';
-                    }, 10);
-                });
-            });
-        });
-    </script>
+            <div class="feature">
+                <div class="feature-icon">🖼️</div>
+                <h3>Imagen Superpuesta</h3>
+                <p>La imagen se coloca en la esquina superior derecha, ajustándose al alto de la pantalla y con efectos de transparencia para integrarse con el fondo.</p>
+            </div>
+            
+            <div class="feature">
+                <div class="feature-icon">📱</div>
+                <h3>Diseño Responsivo</h3>
+                <p>El diseño se adapta perfectamente a cualquier tamaño de pantalla, manteniendo la estética en todos los dispositivos.</p>
+            </div>
+        </div>
+        
+        <div class="code-section">
+            <h2>Cómo se implementó</h2>
+            <pre><span class="code-comment">/* Imagen superpuesta sobre el fondo SVG */</span>
+.overlay-image {
+  <span class="attribute">position</span>: <span class="value">fixed</span>;
+  <span class="attribute">top</span>: <span class="value">0</span>;
+  <span class="attribute">right</span>: <span class="value">0</span>;
+  <span class="attribute">height</span>: <span class="value">100vh</span>;
+  <span class="attribute">width</span>: <span class="value">auto</span>;
+  <span class="attribute">max-width</span>: <span class="value">40%</span>;
+  <span class="attribute">z-index</span>: <span class="value">-1</span>;
+  <span class="attribute">object-fit</span>: <span class="value">cover</span>;
+  <span class="attribute">opacity</span>: <span class="value">0.7</span>;
+  <span class="attribute">filter</span>: <span class="value">sepia(30%) brightness(105%) contrast(90%)</span>;
+}</pre>
+        </div>
+        
+        <footer>
+            <p>Fondo SVG con imagen superpuesta - Diseño adaptable y elegante</p>
+        </footer>
+    </div>
 </body>
 </html>

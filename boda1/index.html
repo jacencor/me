@@ -9,6 +9,11 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;500;600&display=swap"
         rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ballet:opsz@16..72&family=Monsieur+La+Doulaise&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Ballet:opsz@16..72&family=Monsieur+La+Doulaise&family=WindSong:wght@400;500&display=swap"
+        rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -22,9 +27,11 @@
             font-family: 'Montserrat', sans-serif;
             min-height: 100vh;
             display: flex;
-            justify-content: flex-start;
+            justify-content: center;
+            /*justify-content: flex-start;*/
             align-items: center;
             padding-left: 15%;
+            padding-right: 15%;
             overflow-x: hidden;
         }
 
@@ -47,7 +54,8 @@
         }
 
         .couple-names {
-            font-family: 'Dancing Script', cursive;
+            text-align: center;
+            font-family: 'WindSong', cursive;
             font-size: 5rem;
             color: #636B2F;
             margin-bottom: 2rem;
@@ -57,10 +65,25 @@
             opacity: 0;
         }
 
+
+        .divider {
+            height: 1px;
+            width: 100%;
+            background: linear-gradient(to right, transparent, #8B956D, transparent);
+            margin: 2rem 0;
+            transform: translateX(-100%);
+            animation: slideIn 1.5s forwards;
+            animation-delay: 2.5s;
+            opacity: 0;
+        }
+
         .date,
         .location,
-        .hotel {
-            text-transform: uppercase;
+        .hotel,
+        .footer-note,
+        .rsvp {
+            /*text-transform: uppercase;*/
+            text-align: center;
             letter-spacing: 2px;
             font-weight: 500;
             font-size: 1.2rem;
@@ -83,6 +106,51 @@
             animation-delay: 2s;
         }
 
+        .footer-note {
+            animation-delay: 2.5s;
+            font-size: 1.0rem !important;
+        }
+
+        .rsvp {
+            animation-delay: 3s;
+            font-size: 1.0rem !important;
+        }
+
+        .dress-code {
+            text-align: center;
+            font-style: italic;
+            color: #8B956D;
+            font-size: 0.9rem;
+            margin-top: 2.5rem;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            animation-delay: 4s;
+        }
+
+        /* Imagen de fondo superpuesta */
+        .overlay-image {
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100vh;
+            width: auto;
+            max-width: 40%;
+            z-index: -1;
+            object-fit: cover;
+            opacity: 0.7;
+            filter: sepia(30%) brightness(105%) contrast(90%);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
         @keyframes slideIn {
             from {
                 transform: translateX(-100%);
@@ -95,31 +163,10 @@
             }
         }
 
-        .divider2 {
-            height: 2px;
-            width: 80px;
-            background-color: #8B956D;
-            margin: 1.5rem 0;
-            transform: translateX(-100%);
-            animation: slideIn 1.5s forwards;
-            animation-delay: 2.5s;
-            opacity: 0;
-        }
-
-        .divider {
-            height: 1px;
-            width: 100%;
-            background: linear-gradient(to right, transparent, #8B956D, transparent);
-            margin: 2rem 0;
-            transform: translateX(-100%);
-            animation: slideIn 1.5s forwards;
-            animation-delay: 2.5s;
-            opacity: 0;
-        }
-
         @media (max-width: 768px) {
             body {
                 padding-left: 10%;
+                padding-right: 10%;
             }
 
             .couple-names {
@@ -131,34 +178,33 @@
             .hotel {
                 font-size: 1rem;
             }
+
+            .dress-code {
+                font-size: 0.7rem;
+            }
+
+            .footer-note,
+            .rsvp {
+                font-size: 0.75rem;
+            }
         }
     </style>
 </head>
 
 <body>
     <div class="invitation-text">
+        <p class="date">Esta cordialmente invitado a celebrar el matrimonio de</p>
         <h1 class="couple-names">Jackson & Ingrid</h1>
         <p class="date">Sábado 17 de enero del 2026</p>
-        <div class="divider2"></div>
-        <p class="location">Cermonia: Paroquia San Gabriel de la Dolorosa</p>
-        <p class="hotel">Recepción: Wyndham Garden Guayaquil</p>
+        <div class="divider"></div>
+        <p class="location">Ceremonia a las 17:00<br>Parroquia San Gabriel de la Dolorosa</p>
+        <p class="hotel">Recepción a las 18:00<br>Wyndham Garden</p>
+        <div class="divider"></div>
+        <p class="footer-note">Con la gracia de Dios y la bendición de nuestros padres, familiares y amigos</p>
+        <p class="dress-code">Código de Vestimenta: Formal</p>
     </div>
 
     <script>
-        // Pequeño script para reiniciar animaciones si es necesario
-        document.addEventListener('DOMContentLoaded', function () {
-            const elements = document.querySelectorAll('.couple-names, .date, .location, .hotel, .divider');
-
-            // Reiniciar animaciones al hacer clic en cualquier parte
-            document.body.addEventListener('click', function () {
-                elements.forEach(element => {
-                    element.style.animation = 'none';
-                    setTimeout(() => {
-                        element.style.animation = '';
-                    }, 10);
-                });
-            });
-        });
     </script>
 </body>
 
