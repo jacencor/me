@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luna 2D con Colores Planos</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #0a0e17;
+            overflow: hidden;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .moon {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #d0d0d0, #a0a0a0, #808080);
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.5);
+        }
+
+        .crater {
+            position: absolute;
+            border-radius: 50%;
+            background-color: #909090;
+            box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .crater::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            background-color: #b0b0b0;
+        }
+
+        .crater1 {
+            width: 70px;
+            height: 70px;
+            top: 50px;
+            left: 60px;
+        }
+
+        .crater1::after {
+            width: 30px;
+            height: 30px;
+            top: 10px;
+            left: 15px;
+        }
+
+        .crater2 {
+            width: 50px;
+            height: 50px;
+            top: 150px;
+            left: 40px;
+        }
+
+        .crater2::after {
+            width: 20px;
+            height: 20px;
+            top: 5px;
+            left: 20px;
+        }
+
+        .crater3 {
+            width: 40px;
+            height: 40px;
+            top: 80px;
+            right: 70px;
+        }
+
+        .crater3::after {
+            width: 15px;
+            height: 15px;
+            top: 10px;
+            left: 5px;
+        }
+
+        .crater4 {
+            width: 60px;
+            height: 60px;
+            bottom: 70px;
+            right: 50px;
+        }
+
+        .crater4::after {
+            width: 25px;
+            height: 25px;
+            top: 15px;
+            left: 10px;
+        }
+
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="moon">
+            <div class="crater crater1"></div>
+            <div class="crater crater2"></div>
+            <div class="crater crater3"></div>
+            <div class="crater crater4"></div>
+        </div>
+    </div>
+
+    <script>
+        // Crear estrellas de fondo
+        const container = document.querySelector('.container');
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            
+            // Tamaño aleatorio entre 1 y 3px
+            const size = Math.random() * 2 + 1;
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            
+            // Posición aleatoria
+            star.style.top = `${Math.random() * 100}vh`;
+            star.style.left = `${Math.random() * 100}vw`;
+            
+            // Retraso de animación aleatorio
+            star.style.animationDelay = `${Math.random() * 3}s`;
+            
+            container.appendChild(star);
+        }
+
+        // Agregar más cráteres con JavaScript
+        const moon = document.querySelector('.moon');
+        for (let i = 0; i < 8; i++) {
+            const crater = document.createElement('div');
+            crater.classList.add('crater');
+            
+            // Tamaño aleatorio
+            const size = Math.random() * 30 + 20;
+            crater.style.width = `${size}px`;
+            crater.style.height = `${size}px`;
+            
+            // Posición aleatoria dentro de la luna
+            crater.style.top = `${Math.random() * 200 + 50}px`;
+            crater.style.left = `${Math.random() * 200 + 50}px`;
+            
+            // Crear elemento interno para el efecto de luz
+            const highlight = document.createElement('div');
+            highlight.style.position = 'absolute';
+            highlight.style.borderRadius = '50%';
+            highlight.style.backgroundColor = '#b0b0b0';
+            highlight.style.width = `${size / 2.5}px`;
+            highlight.style.height = `${size / 2.5}px`;
+            highlight.style.top = `${size / 5}px`;
+            highlight.style.left = `${size / 5}px`;
+            
+            crater.appendChild(highlight);
+            moon.appendChild(crater);
+        }
+    </script>
+</body>
+</html>

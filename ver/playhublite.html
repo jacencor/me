@@ -1,27 +1,113 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="VER PELIS-SERIES">
-    <title>VER PELIS-SERIES</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
-        integrity="sha512-b2QcS5SsA8tZodcDtGRELiGv5SaKSk1vDHDaQRda0htPYWZ6046lr3kJ5bAAQdpV2mmA/4v0wQF9MyU6/pDIAg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Políticas de Seguridad -->
+    <meta http-equiv="Permissions-Policy"
+        content="accelerometer=(), gyroscope=(), clipboard-write=(), camera=(), microphone=(), geolocation=(), payment=()">
+    <title>Navegador de Sitios</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+
+        #iframe-container {
+            margin-top: 20px;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        #iframe-content {
+            width: 100%;
+            height: 600px;
+            border: none;
+        }
+
+        .site-btn {
+            margin: 2px;
+        }
+    </style>
 </head>
 
 <body>
-    <main>
+    <div class="container">
+        <h1 class="text-center mb-4">Navegador de Sitios</h1>
 
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <iframe src="https://playhublite.com/" style="width: 100vw;height: 100vh;position: relative;"
-                    sandbox="allow-same-origin allow-scripts allow-forms" allow="encrypted-media; autoplay; fullscreen"
-                    allowfullscreen referrerpolicy="no-referrer"></iframe>
+            <div class="col-12">
+                <div class="d-flex flex-wrap justify-content-center mb-3">
+                    <button class="btn btn-primary site-btn" data-url="https://allcalidad.re">AllCalidad</button>
+                    <button class="btn btn-primary site-btn" data-url="https://allpeliculas.se/">AllPeliculas</button>
+                    <button class="btn btn-primary site-btn"
+                        data-url="https://www.cinelibreonline.com/">CineLibre</button>
+                    <button class="btn btn-primary site-btn" data-url="https://cuevana3.ch/">Cuevana</button>
+                    <button class="btn btn-primary site-btn" data-url="https://ennovelas.site/">EnNovelas</button>
+                    <button class="btn btn-primary site-btn" data-url="https://www.genteclic.com">GenteClic</button>
+                    <button class="btn btn-primary site-btn" data-url="http://www.lacartoons.com/">LaCartoons</button>
+                    <button class="btn btn-primary site-btn" data-url="https://mitorrent.mx/">Mitorrent</button>
+                    <button class="btn btn-primary site-btn" data-url="https://ww3.pelisplus.to/">PelisPlus</button>
+                    <button class="btn btn-primary site-btn" data-url="https://newpelis.re/">NewPelis</button>
+                    <button class="btn btn-primary site-btn" data-url="https://www.poseidonhd2.co/">PoseidonHD</button>
+                    <button class="btn btn-primary site-btn" data-url="https://retrotv.org/">RetroTV</button>
+                    <button class="btn btn-primary site-btn"
+                        data-url="https://seriesantiguas.tv/">SeriesAntiguas</button>
+                    <button class="btn btn-primary site-btn" data-url="https://serieslan.com/">SeriesLan</button>
+                    <button class="btn btn-primary site-btn" data-url="https://seriesretro.com/">SeriesRetro</button>
+                    <button class="btn btn-primary site-btn" data-url="https://sololatino.net/">SoloLatino</button>
+                    <button class="btn btn-primary site-btn" data-url="https://ultrapelishd.net/">UltraPelis</button>
+                    <button class="btn btn-primary site-btn" data-url="https://www.zona-leros.com/">ZonaLeros</button>
+                </div>
             </div>
         </div>
-    </main>
+
+        <div id="iframe-container" class="d-none">
+            <div class="p-3 border-bottom bg-light">
+                <strong id="current-site">Selecciona un sitio</strong>
+                <button id="close-iframe" class="btn btn-sm btn-danger float-end">Cerrar</button>
+            </div>
+            <iframe id="iframe-content" sandbox="allow-scripts allow-forms allow-presentation"
+                allow="encrypted-media; autoplay; fullscreen" allowfullscreen referrerpolicy="no-referrer"
+                loading="lazy" importance="low" fetchpriority="low"></iframe>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const iframeContainer = document.getElementById('iframe-container');
+            const iframeContent = document.getElementById('iframe-content');
+            const currentSite = document.getElementById('current-site');
+            const closeBtn = document.getElementById('close-iframe');
+
+            // Agregar evento a todos los botones
+            document.querySelectorAll('.site-btn').forEach(button => {
+                button.addEventListener('click', function () {
+                    const url = this.getAttribute('data-url');
+                    const siteName = this.textContent;
+
+                    // Mostrar el iframe
+                    iframeContainer.classList.remove('d-none');
+
+                    // Establecer la URL y el nombre del sitio
+                    iframeContent.src = url;
+                    currentSite.textContent = siteName + ' - ' + url;
+                });
+            });
+
+            // Botón para cerrar el iframe
+            closeBtn.addEventListener('click', function () {
+                iframeContainer.classList.add('d-none');
+                iframeContent.src = '';
+                currentSite.textContent = 'Selecciona un sitio';
+            });
+        });
+    </script>
 </body>
 
 </html>
