@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Políticas de Seguridad -->
     <meta http-equiv="Permissions-Policy"
         content="accelerometer=(), gyroscope=(), clipboard-write=(), camera=(), microphone=(), geolocation=(), payment=()">
     <title>Navegador de Sitios</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <style>
         body {
             padding: 20px;
@@ -25,59 +25,218 @@
 
         #iframe-content {
             width: 100%;
-            height: 600px;
+            height: 70vh;
             border: none;
         }
 
         .site-btn {
             margin: 2px;
         }
+
+        .dropdown-menu {
+            overflow: hidden;
+            overflow-y: auto;
+            max-height: calc(100vh - 150px);
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <h1 class="text-center mb-4">Navegador de Sitios</h1>
-
         <div class="row">
             <div class="col-12">
-                <div class="d-flex flex-wrap justify-content-center mb-3">
-                    <button class="btn btn-primary site-btn" data-url="https://allcalidad.re">AllCalidad</button>
-                    <button class="btn btn-primary site-btn" data-url="https://allpeliculas.se/">AllPeliculas</button>
-                    <button class="btn btn-primary site-btn"
-                        data-url="https://www.cinelibreonline.com/">CineLibre</button>
-                    <button class="btn btn-primary site-btn" data-url="https://cuevana3.ch/">Cuevana</button>
-                    <button class="btn btn-primary site-btn" data-url="https://ennovelas.site/">EnNovelas</button>
-                    <button class="btn btn-primary site-btn" data-url="https://www.genteclic.com">GenteClic</button>
-                    <button class="btn btn-primary site-btn" data-url="http://www.lacartoons.com/">LaCartoons</button>
-                    <button class="btn btn-primary site-btn" data-url="https://mitorrent.mx/">Mitorrent</button>
-                    <button class="btn btn-primary site-btn" data-url="https://ww3.pelisplus.to/">PelisPlus</button>
-                    <button class="btn btn-primary site-btn" data-url="https://newpelis.re/">NewPelis</button>
-                    <button class="btn btn-primary site-btn" data-url="https://www.poseidonhd2.co/">PoseidonHD</button>
-                    <button class="btn btn-primary site-btn" data-url="https://retrotv.org/">RetroTV</button>
-                    <button class="btn btn-primary site-btn"
-                        data-url="https://seriesantiguas.tv/">SeriesAntiguas</button>
-                    <button class="btn btn-primary site-btn" data-url="https://serieslan.com/">SeriesLan</button>
-                    <button class="btn btn-primary site-btn" data-url="https://seriesretro.com/">SeriesRetro</button>
-                    <button class="btn btn-primary site-btn" data-url="https://sololatino.net/">SoloLatino</button>
-                    <button class="btn btn-primary site-btn" data-url="https://ultrapelishd.net/">UltraPelis</button>
-                    <button class="btn btn-primary site-btn" data-url="https://www.zona-leros.com/">ZonaLeros</button>
+                <div class="dropdown">
+                    <div class="row">
+                        <button class="btn btn-secondary dropdown-toggle" type="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Paginas
+                        </button>
+                    </div>
+                    <ul class="dropdown-menu">
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://allcalidad.ac">"https://allcalidad.ac"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://allcalidad.is">"https://allcalidad.is"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://allcalidad.ms">"https://allcalidad.ms"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://allcalidad.ms/">"https://allcalidad.ms/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://allcalidad.re">"https://allcalidad.re"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://allcalidad.si">"https://allcalidad.si"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://allpeliculas.ac/">"https://allpeliculas.ac/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://allpeliculas.se/">"https://allpeliculas.se/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://www.cinelibreonline.com/">"https://www.cinelibreonline.com/"</button>
+                        </li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://cuevana3.ch/">"https://cuevana3.ch/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://cuevana3.fm/">"https://cuevana3.fm/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://cuevana3.pe/">"https://cuevana3.pe/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://cuevana3.sk/">"https://cuevana3.sk/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://cuevana3.vc/">"https://cuevana3.vc/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://pelisplay.info/">"https://pelisplay.info/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://ww2.cuevana3.ch/">"https://ww2.cuevana3.ch/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://ww3.cuevana3.ch/">"https://ww3.cuevana3.ch/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://www1.cuevana3.ch/">"https://www1.cuevana3.ch/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://www1.cuevana3.cx/">"https://www1.cuevana3.cx/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://www1.cuevana3.fm/">"https://www1.cuevana3.fm/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://www1.cuevana3.pe/">"https://www1.cuevana3.pe/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://www1.cuevana3.vc/">"https://www1.cuevana3.vc/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://www10.cuevana3.ch/">"https://www10.cuevana3.ch/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://www11.cuevana3.ch/">"https://www11.cuevana3.ch/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://www12.cuevana3.ch/">"https://www12.cuevana3.ch/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://www2.cuevana3.ch/">"https://www2.cuevana3.ch/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://www2.cuevana3.cx/">"https://www2.cuevana3.cx/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://www2.cuevana3.pe/">"https://www2.cuevana3.pe/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://www3.cuevana3.ch/">"https://www3.cuevana3.ch/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://www4.cuevana3.ch/">"https://www4.cuevana3.ch/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://www5.cuevana3.ch/">"https://www5.cuevana3.ch/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://www6.cuevana3.ch/">"https://www6.cuevana3.ch/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://www7.cuevana3.ch/">"https://www7.cuevana3.ch/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://www8.cuevana3.ch/">"https://www8.cuevana3.ch/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://doramed.tv/">"https://doramed.tv/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://doramedplay.net/">"https://doramedplay.net/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://a.ennovelas.net/">"https://a.ennovelas.net/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://b.ennovelas.net/">"https://b.ennovelas.net/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://d.ennovelas.net/">"https://d.ennovelas.net/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://e.ennovelas.net/">"https://e.ennovelas.net/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://ennovelas.io/">"https://ennovelas.io/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://ennovelas.net/">"https://ennovelas.net/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://ennovelas.site/">"https://ennovelas.site/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://i.ennovelas.net/">"https://i.ennovelas.net/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://jodrif.online/">"https://jodrif.online/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://k.ennovelas.net/">"https://k.ennovelas.net/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://m.ennovelas.net/">"https://m.ennovelas.net/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://s.ennovelas.net/">"https://s.ennovelas.net/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://w.ennovelas.net/">"https://w.ennovelas.net/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://ww.ennovelas.net/">"https://ww.ennovelas.net/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://www.ennovelas.com/">"https://www.ennovelas.com/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://www.zonevipz.com/">"https://www.zonevipz.com/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://www.genteclic.com">"https://www.genteclic.com"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://mitorrent.mx/">"https://mitorrent.mx/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://home.pelisplus.lat/">"https://home.pelisplus.lat/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://pelisplus.lat/">"https://pelisplus.lat/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://pelisplus.mov/">"https://pelisplus.mov/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://pelisplus.ninja/">"https://pelisplus.ninja/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://pelisplushd.net/">"https://pelisplushd.net/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://pelisplushd.to/">"https://pelisplushd.to/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://ww3.pelisplus.to/">"https://ww3.pelisplus.to/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://www.pelisplus.lat/">"https://www.pelisplus.lat/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://www.pelisplus.me/">"https://www.pelisplus.me/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://newpelis.nl/">"https://newpelis.nl/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://newpelis.org/">"https://newpelis.org/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://newpelis.re/">"https://newpelis.re/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://tekilaz.co/">"https://tekilaz.co/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://www.poseidonhd2.co/">"https://www.poseidonhd2.co/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://www.poseidonhd2.com/">"https://www.poseidonhd2.com/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://retrotv.org/">"https://retrotv.org/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://seriesantiguas.com/">"https://seriesantiguas.com/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://seriesantiguas.tv/">"https://seriesantiguas.tv/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://www.seriesantiguas.com/">"https://www.seriesantiguas.com/"</button>
+                        </li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://serieslan.com/">"https://serieslan.com/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://seriesretro.com/">"https://seriesretro.com/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://sololatino.net/">"https://sololatino.net/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://ultrapelishd.net/">"https://ultrapelishd.net/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://www.zona-leros.com/">"https://www.zona-leros.com/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://www.zona-leros.net/">"https://www.zona-leros.net/"</button></li>
+                        <li><button class="dropdown-item" type="button"
+                                data-url="https://www.zonaleros.org/">"https://www.zonaleros.org/"</button></li>
+                    </ul>
                 </div>
             </div>
         </div>
+    </div>
+    <script>
 
-        <div id="iframe-container" class="d-none">
-            <div class="p-3 border-bottom bg-light">
-                <strong id="current-site">Selecciona un sitio</strong>
-                <button id="close-iframe" class="btn btn-sm btn-danger float-end">Cerrar</button>
-            </div>
-            <iframe id="iframe-content" sandbox="allow-scripts allow-forms allow-presentation"
-                allow="encrypted-media; autoplay; fullscreen" allowfullscreen referrerpolicy="no-referrer"
-                loading="lazy" importance="low" fetchpriority="low"></iframe>
+    </script>
+    <div id="iframe-container" class="d-none">
+        <div class="p-3 border-bottom bg-light">
+            <strong id="current-site">Selecciona un sitio</strong>
         </div>
+        <iframe id="iframe-content" sandbox="allow-same-origin allow-scripts allow-forms"
+            allow="encrypted-media; autoplay; fullscreen; accelerometer 'none'; gyroscope 'none'; clipboard-write 'none'; camera 'none'; microphone 'none'; geolocation 'none'; payment 'none'"
+            allowtransparency="false" referrerpolicy="no-referrer" loading="lazy" fetchpriority="low"
+            allowtransparency="false"></iframe>
+    </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const iframeContainer = document.getElementById('iframe-container');
@@ -85,28 +244,20 @@
             const currentSite = document.getElementById('current-site');
             const closeBtn = document.getElementById('close-iframe');
 
-            // Agregar evento a todos los botones
-            document.querySelectorAll('.site-btn').forEach(button => {
+            document.querySelectorAll('.dropdown-item').forEach(button => {
                 button.addEventListener('click', function () {
                     const url = this.getAttribute('data-url');
                     const siteName = this.textContent;
 
-                    // Mostrar el iframe
                     iframeContainer.classList.remove('d-none');
 
-                    // Establecer la URL y el nombre del sitio
                     iframeContent.src = url;
-                    currentSite.textContent = siteName + ' - ' + url;
+                    currentSite.textContent = url;
                 });
             });
-
-            // Botón para cerrar el iframe
-            closeBtn.addEventListener('click', function () {
-                iframeContainer.classList.add('d-none');
-                iframeContent.src = '';
-                currentSite.textContent = 'Selecciona un sitio';
-            });
         });
+        const dropdownElementList = document.querySelectorAll('.dropdown-toggle')
+        const dropdownList = [...dropdownElementList].map(dropdownToggleEl => new bootstrap.Dropdown(dropdownToggleEl))
     </script>
 </body>
 
