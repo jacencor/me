@@ -2,269 +2,267 @@
 <html lang="es">
 
 <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="Permissions-Policy"
-                content="accelerometer=(), gyroscope=(), clipboard-write=(), camera=(), microphone=(), geolocation=(), payment=()">
-        <title>Navegador de Sitios</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-                integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-                crossorigin="anonymous">
-        <style>
-                body {
-                        padding: 10px;
-                        background-color: #f8f9fa;
-                }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Permissions-Policy"
+        content="accelerometer=(), gyroscope=(), clipboard-write=(), camera=(), microphone=(), geolocation=(), payment=()">
+    <title>Navegador de Sitios</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        body {
+            padding: 10px;
+            background-color: #f8f9fa;
+        }
 
-                #iframe-container {
-                        margin-top: 5px;
-                        border: 1px solid #dee2e6;
-                        border-radius: 5px;
-                        background: white;
-                        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-                }
+        #iframe-container {
+            margin-top: 5px;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
 
-                #iframe-content {
-                        width: 100%;
-                        height: 80vh;
-                        border: none;
-                }
+        #iframe-content {
+            width: 100%;
+            height: 80vh;
+            border: none;
+        }
 
-                .site-btn {
-                        margin: 2px;
-                }
+        .site-btn {
+            margin: 2px;
+        }
 
-                .dropdown-menu {
-                        overflow: hidden;
-                        overflow-y: auto;
-                        max-height: calc(100vh - 150px);
-                }
-        </style>
+        .dropdown-menu {
+            overflow: hidden;
+            overflow-y: auto;
+            max-height: calc(100vh - 150px);
+        }
+    </style>
 </head>
 
 <body>
-        <div class="container">
-                <div class="row">
-                        <div class="col-12">
-                                <div class="dropdown">
-                                        <button class="btn btn-secondary dropdown-toggle" type="button"
-                                                data-bs-toggle="dropdown" aria-expanded="false">
-                                                Sitios pirata
-                                        </button>
-                                        <ul id="siteList" class="dropdown-menu">
-                                        </ul>
-                                </div>
-                        </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Sitios pirata
+                    </button>
+                    <ul id="siteList" class="dropdown-menu">
+                    </ul>
                 </div>
-                <div id="iframe-container" class="d-none">
-                        <div class="p-3 border-bottom bg-light">
-                                <strong id="current-site">Selecciona un sitio</strong>
-                        </div>
-                        <iframe id="iframe-content" sandbox="allow-same-origin  allow-scripts allow-forms"
-                                allow="encrypted-media; autoplay; fullscreen; accelerometer 'none'; gyroscope 'none'; clipboard-write 'none'; camera 'none'; microphone 'none'; geolocation 'none'; payment 'none'"
-                                allowtransparency="false" referrerpolicy="no-referrer" loading="lazy"
-                                fetchpriority="low"></iframe>
-                </div>
+            </div>
         </div>
+        <div id="iframe-container" class="d-none">
+            <div class="p-3 border-bottom bg-light">
+                <strong id="current-site">Selecciona un sitio</strong>
+            </div>
+            <iframe id="iframe-content" sandbox="allow-same-origin  allow-scripts allow-forms"
+                allow="encrypted-media; autoplay; fullscreen; accelerometer 'none'; gyroscope 'none'; clipboard-write 'none'; camera 'none'; microphone 'none'; geolocation 'none'; payment 'none'"
+                allowtransparency="false" referrerpolicy="no-referrer" loading="lazy" fetchpriority="low"></iframe>
+        </div>
+    </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-                crossorigin="anonymous"></script>
-        <script>
-                const sites = [
-                        "https://allcalidad.ac",
-                        "https://allcalidad.is",
-                        "https://allcalidad.ms",
-                        "https://allcalidad.ms/",
-                        "https://allcalidad.re",
-                        "https://allcalidad.si",
-                        "https://allpeliculas.ac/",
-                        "https://allpeliculas.se/",
-                        "https://www3.animeflv.net/",
-                        "https://www.area-documental.com/",
-                        "https://asialiveaction.com",
-                        "https://cineasiaenlinea.com/",
-                        "https://cinecalidad.dev/",
-                        "https://cinecalidad.fi/",
-                        "https://cinecalidad.ms/",
-                        "https://cinecalidad3.com/",
-                        "https://startgaming.net/",
-                        "https://v2.cinecalidad.foo/",
-                        "https://v3.cine-calidad.com/",
-                        "https://vvw.cinecalidad.foo/",
-                        "https://vww.cinecalidad.foo/",
-                        "https://ww.cinecalidad.foo/",
-                        "https://wwv.cinecalidad.tf/",
-                        "https://www.cinecalidad.foo/",
-                        "https://www.cinecalidad.lat/",
-                        "https://www.cinecalidad.tf/",
-                        "https://www.cinecalidad.vg/",
-                        "https://www3.cinecalidad.ms/",
-                        "https://www5.cine-calidad.com/",
-                        "https://www.cinelibreonline.com/",
-                        "https://cuevana3.ch/",
-                        "https://cuevana3.fm/",
-                        "https://cuevana3.pe/",
-                        "https://cuevana3.sk/",
-                        "https://cuevana3.vc/",
-                        "https://pelisplay.info/",
-                        "https://ww2.cuevana3.ch/",
-                        "https://ww3.cuevana3.ch/",
-                        "https://www1.cuevana3.ch/",
-                        "https://www1.cuevana3.cx/",
-                        "https://www1.cuevana3.fm/",
-                        "https://www1.cuevana3.pe/",
-                        "https://www1.cuevana3.vc/",
-                        "https://www10.cuevana3.ch/",
-                        "https://www11.cuevana3.ch/",
-                        "https://www12.cuevana3.ch/",
-                        "https://www2.cuevana3.ch/",
-                        "https://www2.cuevana3.cx/",
-                        "https://www2.cuevana3.pe/",
-                        "https://www3.cuevana3.ch/",
-                        "https://www4.cuevana3.ch/",
-                        "https://www5.cuevana3.ch/",
-                        "https://www6.cuevana3.ch/",
-                        "https://www7.cuevana3.ch/",
-                        "https://www8.cuevana3.ch/",
-                        "https://www.documentales-online.com/",
-                        "https://www.doramasqueen.com/",
-                        "https://www.doramasyt.com/",
-                        "https://doramed.tv/",
-                        "https://doramedplay.net/",
-                        "https://www.ecartelera.com/",
-                        "https://a.ennovelas.net/",
-                        "https://b.ennovelas.net/",
-                        "https://d.ennovelas.net/",
-                        "https://e.ennovelas.net/",
-                        "https://ennovelas.io/",
-                        "https://ennovelas.net/",
-                        "https://ennovelas.site/",
-                        "https://i.ennovelas.net/",
-                        "https://jodrif.online/",
-                        "https://k.ennovelas.net/",
-                        "https://m.ennovelas.net/",
-                        "https://s.ennovelas.net/",
-                        "https://w.ennovelas.net/",
-                        "https://ww.ennovelas.net/",
-                        "https://www.ennovelas.com/",
-                        "https://www.zonevipz.com/",
-                        "https://www.genteclic.com",
-                        "https://gnula.nu/",
-                        "https://gnulahd.nu/",
-                        "https://grantorrent.mov/",
-                        "https://grantorrent.zip/",
-                        "https://www1.grantorrent.lol/",
-                        "https://www1.grantorrent.pm/",
-                        "https://www1.grantorrent.wf/",
-                        "https://www2.grantorrent.lol/",
-                        "https://www3.grantorrent.wf/",
-                        "https://www4.grantorrent.wf/",
-                        "https://hd-full.biz/",
-                        "https://hdfull.blog/",
-                        "https://hdfull.buzz/",
-                        "https://hdfull.bz/",
-                        "https://hdfull.cfd/",
-                        "https://hdfull.cloud/",
-                        "https://hd-full.co/",
-                        "https://hdfull.cv/",
-                        "https://hdfull.digital/",
-                        "https://hd-full.fit/",
-                        "https://hdfull.fun/",
-                        "https://hdfull.help/",
-                        "https://hdfull.icu/",
-                        "https://hd-full.im/",
-                        "https://hd-full.in/",
-                        "https://hd-full.info/",
-                        "https://hdfull.life/",
-                        "https://hd-full.life/",
-                        "https://hdfull.lol/",
-                        "https://hd-full.lol/",
-                        "https://hdfull.love/",
-                        "https://hd-full.me/",
-                        "https://hdfull.monster/",
-                        "https://hdfull.one/",
-                        "https://hd-full.one/",
-                        "https://hdfull.org/",
-                        "https://hdfull.quest/",
-                        "https://hdfull.sbs/",
-                        "https://hd-full.sbs/",
-                        "https://hdfull.store/",
-                        "https://hdfull.tel/",
-                        "https://hdfull.today/",
-                        "https://hdfull.top/",
-                        "https://hdfull.video/",
-                        "https://hd-full.vip/",
-                        "https://hdfull.work/",
-                        "https://hdfull.wtf/",
-                        "https://new.hdfull.one/",
-                        "https://www2.hdfull.one/",
-                        "https://hdfull.be/",
-                        "https://hdfull.bz/",
-                        "https://hdfull.fm/",
-                        "https://www.hdfull.app/",
-                        "https://www.hdfull.it/",
-                        "https://www.hdfull.tw/",
-                        "https://jkanime.net/",
-                        "https://mitorrent.mx/",
-                        "https://home.pelisplus.lat/",
-                        "https://pelisplus.lat/",
-                        "https://pelisplus.mov/",
-                        "https://pelisplus.ninja/",
-                        "https://pelisplushd.net/",
-                        "https://pelisplushd.to/",
-                        "https://ww3.pelisplus.to/",
-                        "https://www.pelisplus.lat/",
-                        "https://www.pelisplus.me/",
-                        "https://newpelis.nl/",
-                        "https://newpelis.org/",
-                        "https://newpelis.re/",
-                        "https://tekilaz.co/",
-                        "https://www.poseidonhd2.co/",
-                        "https://www.poseidonhd2.com/",
-                        "https://retrotv.org/",
-                        "https://seriesantiguas.com/",
-                        "https://seriesantiguas.tv/",
-                        "https://www.seriesantiguas.com/",
-                        "https://serieslan.com/",
-                        "https://seriesretro.com/",
-                        "https://sololatino.net/",
-                        "https://online.tucineclasico.es/",
-                        "https://ultrapelishd.net/",
-                        "https://www.zona-leros.com/",
-                        "https://www.zona-leros.net/",
-                        "https://www.zonaleros.org/",
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script>
+        const sites = [
+            "https://allcalidad.ac",
+            "https://allcalidad.is",
+            "https://allcalidad.ms",
+            "https://allcalidad.ms/",
+            "https://allcalidad.re",
+            "https://allcalidad.si",
+            "https://allpeliculas.ac/",
+            "https://allpeliculas.se/",
+            "https://www3.animeflv.net/",
+            "https://www.area-documental.com/",
+            "https://asialiveaction.com",
+            "https://cineasiaenlinea.com/",
+            "https://cinecalidad.dev/",
+            "https://cinecalidad.fi/",
+            "https://cinecalidad.ms/",
+            "https://cinecalidad3.com/",
+            "https://startgaming.net/",
+            "https://v2.cinecalidad.foo/",
+            "https://v3.cine-calidad.com/",
+            "https://vvw.cinecalidad.foo/",
+            "https://vww.cinecalidad.foo/",
+            "https://ww.cinecalidad.foo/",
+            "https://wwv.cinecalidad.tf/",
+            "https://www.cinecalidad.foo/",
+            "https://www.cinecalidad.lat/",
+            "https://www.cinecalidad.tf/",
+            "https://www.cinecalidad.vg/",
+            "https://www3.cinecalidad.ms/",
+            "https://www5.cine-calidad.com/",
+            "https://www.cinelibreonline.com/",
+            "https://cuevana3.ch/",
+            "https://cuevana3.fm/",
+            "https://cuevana3.pe/",
+            "https://cuevana3.sk/",
+            "https://cuevana3.vc/",
+            "https://pelisplay.info/",
+            "https://ww2.cuevana3.ch/",
+            "https://ww3.cuevana3.ch/",
+            "https://www1.cuevana3.ch/",
+            "https://www1.cuevana3.cx/",
+            "https://www1.cuevana3.fm/",
+            "https://www1.cuevana3.pe/",
+            "https://www1.cuevana3.vc/",
+            "https://www10.cuevana3.ch/",
+            "https://www11.cuevana3.ch/",
+            "https://www12.cuevana3.ch/",
+            "https://www2.cuevana3.ch/",
+            "https://www2.cuevana3.cx/",
+            "https://www2.cuevana3.pe/",
+            "https://www3.cuevana3.ch/",
+            "https://www4.cuevana3.ch/",
+            "https://www5.cuevana3.ch/",
+            "https://www6.cuevana3.ch/",
+            "https://www7.cuevana3.ch/",
+            "https://www8.cuevana3.ch/",
+            "https://www.documentales-online.com/",
+            "https://www.doramasqueen.com/",
+            "https://www.doramasyt.com/",
+            "https://doramed.tv/",
+            "https://doramedplay.net/",
+            "https://www.ecartelera.com/",
+            "https://a.ennovelas.net/",
+            "https://b.ennovelas.net/",
+            "https://d.ennovelas.net/",
+            "https://e.ennovelas.net/",
+            "https://ennovelas.io/",
+            "https://ennovelas.net/",
+            "https://ennovelas.site/",
+            "https://i.ennovelas.net/",
+            "https://jodrif.online/",
+            "https://k.ennovelas.net/",
+            "https://m.ennovelas.net/",
+            "https://s.ennovelas.net/",
+            "https://w.ennovelas.net/",
+            "https://ww.ennovelas.net/",
+            "https://www.ennovelas.com/",
+            "https://www.zonevipz.com/",
+            "https://www.genteclic.com",
+            "https://gnula.nu/",
+            "https://gnulahd.nu/",
+            "https://grantorrent.mov/",
+            "https://grantorrent.zip/",
+            "https://www1.grantorrent.lol/",
+            "https://www1.grantorrent.pm/",
+            "https://www1.grantorrent.wf/",
+            "https://www2.grantorrent.lol/",
+            "https://www3.grantorrent.wf/",
+            "https://www4.grantorrent.wf/",
+            "https://hd-full.biz/",
+            "https://hdfull.blog/",
+            "https://hdfull.buzz/",
+            "https://hdfull.bz/",
+            "https://hdfull.cfd/",
+            "https://hdfull.cloud/",
+            "https://hd-full.co/",
+            "https://hdfull.cv/",
+            "https://hdfull.digital/",
+            "https://hd-full.fit/",
+            "https://hdfull.fun/",
+            "https://hdfull.help/",
+            "https://hdfull.icu/",
+            "https://hd-full.im/",
+            "https://hd-full.in/",
+            "https://hd-full.info/",
+            "https://hdfull.life/",
+            "https://hd-full.life/",
+            "https://hdfull.lol/",
+            "https://hd-full.lol/",
+            "https://hdfull.love/",
+            "https://hd-full.me/",
+            "https://hdfull.monster/",
+            "https://hdfull.one/",
+            "https://hd-full.one/",
+            "https://hdfull.org/",
+            "https://hdfull.quest/",
+            "https://hdfull.sbs/",
+            "https://hd-full.sbs/",
+            "https://hdfull.store/",
+            "https://hdfull.tel/",
+            "https://hdfull.today/",
+            "https://hdfull.top/",
+            "https://hdfull.video/",
+            "https://hd-full.vip/",
+            "https://hdfull.work/",
+            "https://hdfull.wtf/",
+            "https://new.hdfull.one/",
+            "https://www2.hdfull.one/",
+            "https://hdfull.be/",
+            "https://hdfull.bz/",
+            "https://hdfull.fm/",
+            "https://www.hdfull.app/",
+            "https://www.hdfull.it/",
+            "https://www.hdfull.tw/",
+            "https://jkanime.net/",
+            "https://mitorrent.mx/",
+            "https://home.pelisplus.lat/",
+            "https://pelisplus.lat/",
+            "https://pelisplus.mov/",
+            "https://pelisplus.ninja/",
+            "https://pelisplushd.net/",
+            "https://pelisplushd.to/",
+            "https://ww3.pelisplus.to/",
+            "https://www.pelisplus.lat/",
+            "https://www.pelisplus.me/",
+            "https://newpelis.nl/",
+            "https://newpelis.org/",
+            "https://newpelis.re/",
+            "https://tekilaz.co/",
+            "https://www.poseidonhd2.co/",
+            "https://www.poseidonhd2.com/",
+            "https://retrotv.org/",
+            "https://seriesantiguas.com/",
+            "https://seriesantiguas.tv/",
+            "https://www.seriesantiguas.com/",
+            "https://serieslan.com/",
+            "https://seriesretro.com/",
+            "https://sololatino.net/",
+            "https://online.tucineclasico.es/",
+            "https://ultrapelishd.net/",
+            "https://www.zona-leros.com/",
+            "https://www.zona-leros.net/",
+            "https://www.zonaleros.org/",
+        ]
+        const siteList = document.getElementById('siteList');
+        sites.forEach(url => {
+            const item = document.createElement('li');
+            const site = document.createElement('button');
+            site.classList.add('dropdown-item');
+            site.setAttribute('type', 'button');
+            site.setAttribute('data-url', url);
+            site.innerText = url;
+            item.appendChild(site);
+            siteList.appendChild(site);
+        });
 
-                ]
-                const siteList = document.getElementById('siteList');
-                sites.forEach(url => {
-                        const item = document.createElement('li');
-                        const site = document.createElement('button');
-                        site.classList.add('dropdown-item');
-                        site.setAttribute('type', 'button');
-                        site.setAttribute('data-url', url);
-                        site.innerText = url;
-                        item.appendChild(site);
-                        siteList.appendChild(site);
+        document.addEventListener('DOMContentLoaded', function () {
+            const iframeContainer = document.getElementById('iframe-container');
+            const iframeContent = document.getElementById('iframe-content');
+            const currentSite = document.getElementById('current-site');
+
+            document.querySelectorAll('.dropdown-item').forEach(button => {
+                button.addEventListener('click', function () {
+                    const url = this.getAttribute('data-url');
+                    iframeContainer.classList.remove('d-none');
+                    iframeContent.src = url;
+                    currentSite.textContent = url;
                 });
+            });
+        });
 
-                document.addEventListener('DOMContentLoaded', function () {
-                        const iframeContainer = document.getElementById('iframe-container');
-                        const iframeContent = document.getElementById('iframe-content');
-                        const currentSite = document.getElementById('current-site');
-
-                        document.querySelectorAll('.dropdown-item').forEach(button => {
-                                button.addEventListener('click', function () {
-                                        const url = this.getAttribute('data-url');
-                                        iframeContainer.classList.remove('d-none');
-                                        iframeContent.src = url;
-                                        currentSite.textContent = url;
-                                });
-                        });
-                });
-                const dropdownElementList = document.querySelectorAll('.dropdown-toggle')
-                const dropdownList = [...dropdownElementList].map(dropdownToggleEl => new bootstrap.Dropdown(dropdownToggleEl))
-        </script>
+        const dropdownElementList = document.querySelectorAll('.dropdown-toggle')
+        const dropdownList = [...dropdownElementList].map(dropdownToggleEl => new bootstrap.Dropdown(dropdownToggleEl))
+    </script>
 </body>
 
 </html>
